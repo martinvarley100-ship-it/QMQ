@@ -93,13 +93,22 @@ function renderRail(side, activeId) {
   const brandLabel = (side === "seller") ? "aim" : "aim";
   const sideTag = (side === "seller") ? "" : '<div style="font-size:10px;color:var(--rail-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-left:8px;padding:2px 8px;background:var(--rail-hover);border-radius:4px">Supplier</div>';
 
+  // Detect if we are at the site root (index.html) vs a subfolder page.
+  // From a subfolder like /QMQ/seller/, "../seller/x.html" works fine.
+  // From the root /QMQ/, "../seller/x.html" goes one level too high. Strip the ../ in that case.
+  const atRoot = !window.location.pathname.match(/\/(seller|supplier)\//);
+  const fixHref = (h) => {
+    if (!h || h === "#") return h;
+    return atRoot ? h.replace(/^\.\.\//, "") : h;
+  };
+
   const items = nav.map(item => {
     if (item.section !== undefined) {
       return item.section ? `<div class="rail-section-label">${item.section}</div>` : '<div style="height:4px"></div>';
     }
     const active = (activeId && item.id === activeId) ? "active" : "";
     const icon = ICONS[item.icon] || ICONS.search;
-    return `<a class="rail-item ${active}" href="${item.href}"><span class="rail-icon">${icon}</span>${item.label}</a>`;
+    return `<a class="rail-item ${active}" href="${fixHref(item.href)}"><span class="rail-icon">${icon}</span>${item.label}</a>`;
   }).join("");
 
   return `
