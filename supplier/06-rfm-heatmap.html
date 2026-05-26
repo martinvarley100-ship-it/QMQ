@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RFM Heatmap, BruMate</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+<style>
+.heat-grid {
+  display: grid;
+  grid-template-columns: 250px repeat(5, 1fr);
+  gap: 5px;
+  font-size: 12px;
+}
+.heat-h {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--ink-faint);
+  font-weight: 700;
+  text-align: center;
+  padding: 8px 0;
+}
+.heat-name {
+  padding: 11px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--canvas);
+  border-radius: 6px;
+}
+.heat-cell {
+  text-align: center;
+  padding: 12px 0;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.heat-9, .heat-10 { background: #10B981; color: white; }
+.heat-7, .heat-8 { background: #6EE7B7; color: #064E3B; }
+.heat-5, .heat-6 { background: #FEF3C7; color: #92400E; }
+.heat-3, .heat-4 { background: #FCA5A5; color: #7F1D1D; }
+.heat-1, .heat-2 { background: #DC2626; color: white; }
+.heat-spend {
+  text-align: center;
+  padding: 12px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 12px;
+}
+.r-drop {
+  display: inline-block;
+  font-size: 9px;
+  background: var(--danger-soft);
+  color: var(--danger);
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-weight: 700;
+  margin-left: 6px;
+}
+</style>
+</head>
+<body>
+
+<div id="rail-host" data-side="supplier-dave" data-active="rfm"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>RFM heatmap</h1>
+        <div class="subtitle">Recency, Frequency, Monetary scoring across your distributor base. Click any cell to see trend.</div>
+      </div>
+    </div>
+    <div class="page-actions">
+      <span class="pill pill-success">Pro tier</span>
+      <button class="btn btn-secondary btn-sm">Export CSV</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">
+      <h3>Your top 15 distributors</h3>
+      <div class="row-tight">
+        <button class="btn btn-secondary btn-sm">By RFM total</button>
+        <button class="btn btn-ghost btn-sm">By spend</button>
+        <button class="btn btn-ghost btn-sm">By volatility</button>
+      </div>
+    </div>
+
+    <div class="heat-grid">
+      <div class="heat-h">Distributor</div>
+      <div class="heat-h">Recency</div>
+      <div class="heat-h">Frequency</div>
+      <div class="heat-h">Monetary</div>
+      <div class="heat-h">Total spend (12m)</div>
+      <div class="heat-h">Trend</div>
+
+      <div class="heat-name"><span>Brightline Promo</span></div>
+      <div class="heat-cell heat-9" onclick="window.location.href='12-rfm-trend.html'">9</div>
+      <div class="heat-cell heat-9" onclick="window.location.href='12-rfm-trend.html'">9</div>
+      <div class="heat-cell heat-8" onclick="window.location.href='12-rfm-trend.html'">8</div>
+      <div class="heat-spend">$42,000</div>
+      <div class="heat-spend" style="color:var(--success)">▲ +18%</div>
+
+      <div class="heat-name"><span>Halo Branded Solutions</span></div>
+      <div class="heat-cell heat-8" onclick="window.location.href='12-rfm-trend.html'">8</div>
+      <div class="heat-cell heat-7" onclick="window.location.href='12-rfm-trend.html'">7</div>
+      <div class="heat-cell heat-9" onclick="window.location.href='12-rfm-trend.html'">9</div>
+      <div class="heat-spend">$57,800</div>
+      <div class="heat-spend" style="color:var(--success)">▲ +24%</div>
+
+      <div class="heat-name"><span>Geiger <span class="r-drop">R drop</span></span></div>
+      <div class="heat-cell heat-5" onclick="window.location.href='12-rfm-trend.html'">5</div>
+      <div class="heat-cell heat-4" onclick="window.location.href='12-rfm-trend.html'">4</div>
+      <div class="heat-cell heat-9" onclick="window.location.href='12-rfm-trend.html'">9</div>
+      <div class="heat-spend">$48,200</div>
+      <div class="heat-spend" style="color:var(--danger)">▼ -31%</div>
+
+      <div class="heat-name"><span>Fully Promoted</span></div>
+      <div class="heat-cell heat-8" onclick="window.location.href='12-rfm-trend.html'">8</div>
+      <div class="heat-cell heat-7" onclick="window.location.href='12-rfm-trend.html'">7</div>
+      <div class="heat-cell heat-9" onclick="window.location.href='12-rfm-trend.html'">9</div>
+      <div class="heat-spend">$64,100</div>
+      <div class="heat-spend" style="color:var(--success)">▲ +9%</div>
+
+      <div class="heat-name"><span>Promote Inc</span></div>
+      <div class="heat-cell heat-7" onclick="window.location.href='12-rfm-trend.html'">7</div>
+      <div class="heat-cell heat-6" onclick="window.location.href='12-rfm-trend.html'">6</div>
+      <div class="heat-cell heat-5" onclick="window.location.href='12-rfm-trend.html'">5</div>
+      <div class="heat-spend">$22,400</div>
+      <div class="heat-spend faint">flat</div>
+
+      <div class="heat-name"><span>Distributor #189</span></div>
+      <div class="heat-cell heat-6" onclick="window.location.href='12-rfm-trend.html'">6</div>
+      <div class="heat-cell heat-5" onclick="window.location.href='12-rfm-trend.html'">5</div>
+      <div class="heat-cell heat-4" onclick="window.location.href='12-rfm-trend.html'">4</div>
+      <div class="heat-spend">$11,800</div>
+      <div class="heat-spend faint">flat</div>
+
+      <div class="heat-name"><span>Distributor #432 <span class="r-drop">R drop</span></span></div>
+      <div class="heat-cell heat-4" onclick="window.location.href='12-rfm-trend.html'">4</div>
+      <div class="heat-cell heat-7" onclick="window.location.href='12-rfm-trend.html'">7</div>
+      <div class="heat-cell heat-8" onclick="window.location.href='12-rfm-trend.html'">8</div>
+      <div class="heat-spend">$34,200</div>
+      <div class="heat-spend" style="color:var(--danger)">▼ -28%</div>
+
+      <div class="heat-name"><span>Distributor #298</span></div>
+      <div class="heat-cell heat-9" onclick="window.location.href='12-rfm-trend.html'">9</div>
+      <div class="heat-cell heat-8" onclick="window.location.href='12-rfm-trend.html'">8</div>
+      <div class="heat-cell heat-7" onclick="window.location.href='12-rfm-trend.html'">7</div>
+      <div class="heat-spend">$29,500</div>
+      <div class="heat-spend" style="color:var(--success)">▲ +12%</div>
+
+      <div class="heat-name"><span>Distributor #356</span></div>
+      <div class="heat-cell heat-3" onclick="window.location.href='12-rfm-trend.html'">3</div>
+      <div class="heat-cell heat-4" onclick="window.location.href='12-rfm-trend.html'">4</div>
+      <div class="heat-cell heat-5" onclick="window.location.href='12-rfm-trend.html'">5</div>
+      <div class="heat-spend">$8,400</div>
+      <div class="heat-spend" style="color:var(--danger)">▼ -42%</div>
+
+      <div class="heat-name"><span>Distributor #401</span></div>
+      <div class="heat-cell heat-7" onclick="window.location.href='12-rfm-trend.html'">7</div>
+      <div class="heat-cell heat-9" onclick="window.location.href='12-rfm-trend.html'">9</div>
+      <div class="heat-spend">8</div>
+      <div class="heat-spend">$31,200</div>
+      <div class="heat-spend" style="color:var(--success)">▲ +6%</div>
+    </div>
+
+    <div style="margin-top:24px;padding:14px 16px;background:var(--gold-soft);border-radius:8px;font-size:13px;color:var(--ink-muted);line-height:1.6">
+      <b style="color:var(--gold)">How to read this.</b> Each cell is 1 to 10, calculated weekly. R is days since last order, F is order count over 12 months, M is total spend over 12 months. R-drop badge flags accounts where Recency has fallen 3+ points in the last 60 days. These are the accounts to call before they churn.
+    </div>
+  </div>
+
+  <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+    <div class="card">
+      <div class="card-section-h">
+        <div class="icon-sq" style="background:var(--danger-soft);color:var(--danger)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="2" y2="22"/></svg></div>
+        <h4>At risk (R drop)</h4>
+      </div>
+      <div class="bold" style="font-size:24px;color:var(--danger)">3 accounts</div>
+      <div class="faint" style="font-size:12px">$94k combined annual spend at risk</div>
+    </div>
+    <div class="card">
+      <div class="card-section-h">
+        <div class="icon-sq" style="background:var(--success-soft);color:var(--success)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg></div>
+        <h4>Growing</h4>
+      </div>
+      <div class="bold" style="font-size:24px;color:var(--success)">8 accounts</div>
+      <div class="faint" style="font-size:12px">+15% average spend lift</div>
+    </div>
+    <div class="card">
+      <div class="card-section-h">
+        <div class="icon-sq"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>
+        <h4>Stable</h4>
+      </div>
+      <div class="bold" style="font-size:24px">4 accounts</div>
+      <div class="faint" style="font-size:12px">Maintenance mode</div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('supplier', {
+    sellerHref: '../seller/08-dashboard-replies-in.html',
+    supplierHref: '06-rfm-heatmap.html'
+  });
+</script>
+</body>
+</html>

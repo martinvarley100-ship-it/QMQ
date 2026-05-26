@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bid response, QR-2026-00482, Erica BruMate</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+<style>
+.ctx-panel {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-card);
+}
+.ctx-h {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.ctx-h .icon-sq {
+  width: 32px; height: 32px;
+}
+.ctx-h h4 { font-size: 14px; font-weight: 700; }
+.ctx-h .sub { font-size: 11px; color: var(--ink-faint); margin-top: 2px; }
+
+.rfm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.rfm-cell {
+  background: var(--canvas);
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: center;
+}
+.rfm-cell .rfm-letter {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 700;
+  color: var(--ink-faint);
+}
+.rfm-cell .rfm-score {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.rfm-cell .rfm-foot {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--ink-faint);
+  margin-top: 2px;
+  font-weight: 600;
+}
+.rfm-cell.high .rfm-score { color: var(--success); }
+.rfm-cell.med .rfm-score { color: var(--gold); }
+.rfm-cell.low .rfm-score { color: var(--danger); }
+
+.lt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.lt-row:last-child { border: none; }
+.lt-row.total {
+  background: var(--gold-soft);
+  margin: 6px -8px 0;
+  padding: 10px 8px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 700;
+}
+
+.pos-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+.pos-row:last-child { border: none; }
+.pos-k { font-size: 11px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 700; }
+.pos-v { font-size: 14px; font-weight: 700; }
+.pos-v.good { color: var(--success); }
+.pos-v.warn { color: var(--warn); }
+
+.bid-form {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 20px;
+}
+.tier-flag {
+  display: inline-block;
+  background: var(--gold-soft);
+  color: var(--gold);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+</style>
+</head>
+<body>
+
+<div id="rail-host" data-side="supplier-erica" data-active="inbox"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>Bid response, QR-2026-00482</h1>
+        <div class="subtitle">OEM 20oz Tumbler · 2,500 pcs · From Brightline Promo · 42 minutes until SLA close.</div>
+      </div>
+    </div>
+    <div class="page-actions">
+      <span class="pill pill-warn">42m to SLA</span>
+      <span class="pill pill-success">Insight tier</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px">
+    <div class="row" style="align-items:center;gap:16px">
+      <div style="width:72px;height:72px;background:var(--canvas);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:34px">🥤</div>
+      <div style="flex:1">
+        <div class="bold" style="font-size:17px">OEM 20oz Insulated Tumbler, powder coat, push-fit lid</div>
+        <div class="faint" style="font-size:12px;margin-top:2px">Brightline Promo, Miami FL · Martin Varley · Senior AE</div>
+        <div style="display:flex;gap:6px;margin-top:8px">
+          <span class="pill pill-info">2,500 pcs · 5 colours</span>
+          <span class="pill pill-grey">Laser etch, 1 location</span>
+          <span class="pill pill-grey">In hands 14 Dec</span>
+          <span class="pill pill-grey">Ship to Miami</span>
+        </div>
+      </div>
+      <button class="btn btn-ghost btn-sm">📎 View attachments (2)</button>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px">
+
+    <div class="ctx-panel">
+      <div class="ctx-h">
+        <div class="icon-sq"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <div>
+          <h4>Network pricing context <span class="tier-flag">Insight</span></h4>
+          <div class="sub">OEM 20oz Tumbler, 2,000 to 3,000 pcs, 6 month window, 89 matching orders</div>
+        </div>
+      </div>
+
+      <div class="price-chart" style="margin-top:8px">
+        <div class="pc-zones">
+          <div class="pc-zone low"><div class="pc-zone-label">Low</div><div class="pc-zone-range">$4.85 to $5.40</div></div>
+          <div class="pc-zone typ"><div class="pc-zone-label">Typical</div><div class="pc-zone-range">$5.40 to $6.25</div></div>
+          <div class="pc-zone high"><div class="pc-zone-label">High</div><div class="pc-zone-range">$6.25 to $7.10</div></div>
+        </div>
+        <div class="pc-marker" style="left:14.7%;background:var(--info)"><div class="pc-marker-label">You here, last 6 months avg $5.18</div></div>
+      </div>
+
+      <div style="margin-top:18px;font-size:12px;color:var(--ink-muted);line-height:1.55">
+        <b>Read.</b> You typically bid in the Low band on this product. Network median is $5.85.
+      </div>
+
+      <div style="margin-top:12px;padding:10px 12px;background:var(--canvas);border-radius:6px;font-size:11px;color:var(--ink-muted)">
+        <b style="color:var(--ink)">Privacy.</b> Aggregated from 89 orders across 23 distributors. No supplier names, no buyer-specific prices. Minimum sample size 5.
+      </div>
+    </div>
+
+    <div class="ctx-panel">
+      <div class="ctx-h">
+        <div class="icon-sq" style="background:var(--success-soft);color:var(--success)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div>
+          <h4>Distributor relationship <span class="tier-flag">Insight</span></h4>
+          <div class="sub">Brightline Promo, your customer 3 years</div>
+        </div>
+      </div>
+
+      <div class="rfm-grid">
+        <div class="rfm-cell high">
+          <div class="rfm-letter">R</div>
+          <div class="rfm-score">9</div>
+          <div class="rfm-foot">Recency</div>
+        </div>
+        <div class="rfm-cell high">
+          <div class="rfm-letter">F</div>
+          <div class="rfm-score">9</div>
+          <div class="rfm-foot">Frequency</div>
+        </div>
+        <div class="rfm-cell high">
+          <div class="rfm-letter">M</div>
+          <div class="rfm-score">8</div>
+          <div class="rfm-foot">Monetary</div>
+        </div>
+      </div>
+
+      <div style="font-size:12px;color:var(--ink-muted);line-height:1.55;margin-bottom:14px">
+        <b>Loyal incumbent.</b> Ordered 14 days ago. 9 orders in 12 months. $42k spend last year. They expect you to win.
+      </div>
+
+      <div style="padding:14px;background:var(--gold-soft);border-radius:8px">
+        <div class="bold" style="font-size:13px;color:var(--gold);margin-bottom:6px">Loyalty Tax model says</div>
+        <div class="lt-row">
+          <span>Network typical for this brief</span>
+          <span class="mono bold">$5.40</span>
+        </div>
+        <div class="lt-row">
+          <span>+ Loyalty Tax (R9, F9, M8)</span>
+          <span class="mono bold" style="color:var(--gold)">+$0.34</span>
+        </div>
+        <div class="lt-row total">
+          <span>Defensible bid for this customer</span>
+          <span class="mono bold" style="font-size:15px">$5.74</span>
+        </div>
+        <div style="font-size:11px;color:var(--ink-muted);margin-top:8px;line-height:1.5">
+          The model suggests Martin will accept a price 5% above network typical because of switching cost, trust, and predictable performance with you.
+        </div>
+      </div>
+    </div>
+
+    <div class="ctx-panel">
+      <div class="ctx-h">
+        <div class="icon-sq" style="background:var(--info-soft);color:var(--info)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <div>
+          <h4>Your position <span class="tier-flag">Insight</span></h4>
+          <div class="sub">Inventory, capacity, freight, margin</div>
+        </div>
+      </div>
+
+      <div class="pos-row">
+        <div>
+          <div class="pos-k">Inventory</div>
+          <div class="faint" style="font-size:11px;margin-top:2px">All 5 colours, Tampa warehouse</div>
+        </div>
+        <div class="pos-v good">All in stock</div>
+      </div>
+      <div class="pos-row">
+        <div>
+          <div class="pos-k">Decoration capacity</div>
+          <div class="faint" style="font-size:11px;margin-top:2px">Laser bays, week of 1 Dec</div>
+        </div>
+        <div class="pos-v good">62% utilised</div>
+      </div>
+      <div class="pos-row">
+        <div>
+          <div class="pos-k">Freight</div>
+          <div class="faint" style="font-size:11px;margin-top:2px">Tampa FL → Miami FL 33126</div>
+        </div>
+        <div class="pos-v">$410 / 270 mi</div>
+      </div>
+      <div class="pos-row">
+        <div>
+          <div class="pos-k">Your standard margin floor</div>
+          <div class="faint" style="font-size:11px;margin-top:2px">Set by your VP Sales</div>
+        </div>
+        <div class="pos-v">22%</div>
+      </div>
+      <div class="pos-row">
+        <div>
+          <div class="pos-k">At $5.18 unit</div>
+          <div class="faint" style="font-size:11px;margin-top:2px">Cost $3.94 incl. decoration</div>
+        </div>
+        <div class="pos-v good">24% margin</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bid-form">
+    <div class="card-h"><h3>Your bid</h3><span class="pill pill-grey">Net 30 default · Override available</span></div>
+
+    <div class="grid-3" style="margin-bottom:18px">
+      <div>
+        <label class="field-label">Unit price (per piece)</label>
+        <input class="input input-large" value="$5.18">
+        <div class="field-hint">Below network typical, defensible Loyalty Tax bid is $5.74.</div>
+      </div>
+      <div>
+        <label class="field-label">Setup fee</label>
+        <input class="input input-large" value="$40">
+        <div class="field-hint">Standard for 1-location laser etch.</div>
+      </div>
+      <div>
+        <label class="field-label">Mixed colour upcharge</label>
+        <input class="input input-large" value="$0.08 / pc">
+        <div class="field-hint">Applied to 2,500 pcs.</div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:18px">
+      <div>
+        <label class="field-label">Lead time</label>
+        <input class="input" value="10 working days">
+      </div>
+      <div>
+        <label class="field-label">Freight estimate</label>
+        <input class="input" value="$410, LTL Tampa to Miami">
+      </div>
+    </div>
+
+    <div style="padding:14px 16px;background:var(--canvas);border-radius:8px;margin-bottom:18px">
+      <div class="bold" style="font-size:13px;margin-bottom:10px">Offer flags (set by Dave, your VP Sales)</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <label class="row" style="align-items:center;cursor:pointer">
+          <input type="checkbox" checked style="accent-color:var(--gold)"><span style="margin-left:6px;font-size:13px">★ Double Rewards</span>
+        </label>
+        <label class="row" style="align-items:center;cursor:pointer;margin-left:14px">
+          <input type="checkbox" checked style="accent-color:var(--gold)"><span style="margin-left:6px;font-size:13px">⚡ Rush available</span>
+        </label>
+        <label class="row" style="align-items:center;cursor:pointer;margin-left:14px">
+          <input type="checkbox" checked style="accent-color:var(--gold)"><span style="margin-left:6px;font-size:13px">✓ Stock confirmed</span>
+        </label>
+        <label class="row" style="align-items:center;cursor:pointer;margin-left:14px">
+          <input type="checkbox" style="accent-color:var(--gold)"><span style="margin-left:6px;font-size:13px">N30 terms</span>
+        </label>
+        <label class="row" style="align-items:center;cursor:pointer;margin-left:14px">
+          <input type="checkbox" style="accent-color:var(--gold)"><span style="margin-left:6px;font-size:13px">✂ Free setup</span>
+        </label>
+      </div>
+    </div>
+
+    <label class="field-label">Note to Brightline (optional)</label>
+    <textarea class="textarea" placeholder="Anything Martin should know…">Hi Martin, all 5 colours confirmed in Tampa. Can ship by 10 Dec for your 14 Dec in-hands. Erica.</textarea>
+
+    <div style="padding:14px;background:var(--gold-soft);border-radius:8px;margin-top:16px">
+      <div class="between">
+        <div>
+          <div class="bold" style="font-size:13px">Total landed cost for distributor</div>
+          <div class="faint" style="font-size:11px">2,500 × $5.18 + $40 + $200 + $410 freight</div>
+        </div>
+        <div class="bold mono" style="font-size:22px;color:var(--gold)">$13,700</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:var(--paper);border-radius:var(--radius-lg);box-shadow:var(--shadow-card)">
+    <button class="btn btn-secondary" onclick="window.location.href='01-inbox.html'">← Back to inbox</button>
+    <div class="row-tight" style="align-items:center">
+      <button class="btn btn-ghost" data-toast-only="Draft saved, you can return within SLA window">Save draft</button>
+      <button class="btn btn-danger">Decline to bid</button>
+      <button class="btn btn-primary btn-lg" data-next="03-bid-submitted.html" data-toast="Bid submitted to Brightline Promo">Submit bid →</button>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('supplier', {
+    sellerHref: '../seller/08-dashboard-replies-in.html',
+    supplierHref: '02-bid-response-erica.html'
+  });
+</script>
+</body>
+</html>

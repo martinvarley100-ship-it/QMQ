@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Step 3, choose suppliers, QMQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+<style>
+.sup-row {
+  display: grid;
+  grid-template-columns: 28px 1fr 120px 130px 110px 110px;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  align-items: center;
+  background: var(--paper);
+  font-size: 13px;
+}
+.sup-row.picked {
+  background: var(--gold-soft);
+  border-color: var(--gold);
+}
+.sup-row input[type=checkbox] {
+  width: 18px; height: 18px;
+  accent-color: var(--gold);
+}
+.sup-name {
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sup-rep {
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-top: 2px;
+}
+.match-score {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 700;
+  margin-top: 6px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.match-direct { background: var(--success-soft); color: var(--success); }
+.match-close { background: var(--warn-soft); color: var(--warn); }
+.sup-delta {
+  font-size: 11px;
+  color: var(--warn);
+  margin-top: 4px;
+  font-style: italic;
+}
+.sup-meta-k {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--ink-faint);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 2px;
+}
+.sup-meta-v {
+  font-size: 12px;
+  font-weight: 500;
+}
+.sup-meta-v.ok { color: var(--success); font-weight: 600; }
+.group-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--canvas);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  margin-top: 8px;
+}
+.group-h h4 {
+  font-size: 13px;
+  font-weight: 700;
+}
+.excl-strip {
+  background: #FBF7ED;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 18px;
+}
+.excl-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 12px;
+  border-bottom: 1px dashed var(--border-soft);
+}
+.excl-row:last-child { border: none; }
+.excl-reason {
+  color: var(--danger);
+  font-size: 11px;
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+
+<div id="rail-host" data-side="seller" data-active="qmq"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>New quote request</h1>
+        <div class="subtitle">Step 3 of 4, choose suppliers. AimIQ has filtered out those who cannot ship by 14 December.</div>
+      </div>
+    </div>
+    <div class="page-actions">
+      <span class="pill pill-gold">3 of 5 selected</span>
+    </div>
+  </div>
+
+  <div class="stepper">
+    <div class="step done"><div class="step-num">✓</div>Product</div>
+    <div class="step-arrow">›</div>
+    <div class="step done"><div class="step-num">✓</div>Brief</div>
+    <div class="step-arrow">›</div>
+    <div class="step active"><div class="step-num">3</div>Suppliers</div>
+    <div class="step-arrow">›</div>
+    <div class="step"><div class="step-num">4</div>Review &amp; send</div>
+  </div>
+
+  <div class="card">
+    <p class="muted" style="font-size:13px;margin-bottom:18px">11 suppliers stock this product. 8 can ship by your in-hands date. AimIQ filters out the rest automatically. See the bottom of the page for the 3 excluded suppliers and why.</p>
+
+    <div class="group-h">
+      <h4>Direct match, OEM 20oz Insulated Tumbler</h4>
+      <span class="faint" style="font-size:11px;font-family:'JetBrains Mono',monospace">4 eligible</span>
+    </div>
+
+    <div class="sup-row picked">
+      <input type="checkbox" checked>
+      <div>
+        <div class="sup-name">BruMate Wholesale <span class="tier tier-platinum">Platinum</span></div>
+        <div class="sup-rep">Erica Hahn, Director of Sales</div>
+        <span class="match-score match-direct">Direct · 100</span>
+      </div>
+      <div><span class="sup-meta-k">Inventory</span><span class="sup-meta-v ok">All colours, 2,500+</span></div>
+      <div><span class="sup-meta-k">Ship from</span><span class="sup-meta-v">Tampa FL</span></div>
+      <div><span class="sup-meta-k">Lead time</span><span class="sup-meta-v ok">10 days</span></div>
+      <div><span class="sup-meta-k">Last order</span><span class="sup-meta-v">14 days ago</span></div>
+    </div>
+
+    <div class="sup-row picked">
+      <input type="checkbox" checked>
+      <div>
+        <div class="sup-name">HPG Brands <span class="tier tier-brand">Brand Partner</span></div>
+        <div class="sup-rep">Marcus Tate, National Account Manager</div>
+        <span class="match-score match-direct">Direct · 100</span>
+      </div>
+      <div><span class="sup-meta-k">Inventory</span><span class="sup-meta-v ok">Confirmed full mix</span></div>
+      <div><span class="sup-meta-k">Ship from</span><span class="sup-meta-v">Cincinnati OH</span></div>
+      <div><span class="sup-meta-k">Lead time</span><span class="sup-meta-v">12 days</span></div>
+      <div><span class="sup-meta-k">Last order</span><span class="sup-meta-v">8 months</span></div>
+    </div>
+
+    <div class="sup-row">
+      <input type="checkbox">
+      <div>
+        <div class="sup-name">Sweda Company <span class="tier tier-gold">Gold</span></div>
+        <div class="sup-rep">Linda Park, Senior AM</div>
+        <span class="match-score match-direct">Direct · 100</span>
+      </div>
+      <div><span class="sup-meta-k">Inventory</span><span class="sup-meta-v ok">Confirmed</span></div>
+      <div><span class="sup-meta-k">Ship from</span><span class="sup-meta-v">City of Industry CA</span></div>
+      <div><span class="sup-meta-k">Lead time</span><span class="sup-meta-v">14 days</span></div>
+      <div><span class="sup-meta-k">Last order</span><span class="sup-meta-v">Never</span></div>
+    </div>
+
+    <div class="sup-row">
+      <input type="checkbox">
+      <div>
+        <div class="sup-name">Logomark <span class="tier tier-silver">Silver</span></div>
+        <div class="sup-rep">Tom Reardon, AM</div>
+        <span class="match-score match-direct">Direct · 100</span>
+      </div>
+      <div><span class="sup-meta-k">Inventory</span><span class="sup-meta-v ok">Confirmed</span></div>
+      <div><span class="sup-meta-k">Ship from</span><span class="sup-meta-v">Tustin CA</span></div>
+      <div><span class="sup-meta-k">Lead time</span><span class="sup-meta-v">13 days</span></div>
+      <div><span class="sup-meta-k">Last order</span><span class="sup-meta-v">Never</span></div>
+    </div>
+
+    <div class="group-h">
+      <h4>Closest match, OEM equivalents</h4>
+      <span class="faint" style="font-size:11px;font-family:'JetBrains Mono',monospace">4 eligible</span>
+    </div>
+
+    <div class="sup-row picked">
+      <input type="checkbox" checked>
+      <div>
+        <div class="sup-name">Garyline Drinkware <span class="tier tier-gold">Gold</span></div>
+        <div class="sup-rep">Jen Walker, Strategic AM</div>
+        <span class="match-score match-close">Closest · 94</span>
+        <div class="sup-delta">⚠ Matte coating, not powder coat</div>
+      </div>
+      <div><span class="sup-meta-k">Inventory</span><span class="sup-meta-v ok">Surplus on Matte Black</span></div>
+      <div><span class="sup-meta-k">Ship from</span><span class="sup-meta-v">Greensboro NC</span></div>
+      <div><span class="sup-meta-k">Lead time</span><span class="sup-meta-v">11 days</span></div>
+      <div><span class="sup-meta-k">Last order</span><span class="sup-meta-v">Never</span></div>
+    </div>
+
+    <div class="sup-row">
+      <input type="checkbox">
+      <div>
+        <div class="sup-name">Spector &amp; Co <span class="tier tier-gold">Gold</span></div>
+        <div class="sup-rep">Carla Manfre, AM</div>
+        <span class="match-score match-close">Closest · 87</span>
+        <div class="sup-delta">⚠ Screw-top lid, not push-fit</div>
+      </div>
+      <div><span class="sup-meta-k">Inventory</span><span class="sup-meta-v ok">Confirmed</span></div>
+      <div><span class="sup-meta-k">Ship from</span><span class="sup-meta-v">Lachine QC</span></div>
+      <div><span class="sup-meta-k">Lead time</span><span class="sup-meta-v">12 days</span></div>
+      <div><span class="sup-meta-k">Last order</span><span class="sup-meta-v">Never</span></div>
+    </div>
+
+    <div class="sup-row">
+      <input type="checkbox">
+      <div>
+        <div class="sup-name">Polyconcept NA <span class="tier tier-platinum">Platinum</span></div>
+        <div class="sup-rep">Dave Lemoine, Director</div>
+        <span class="match-score match-close">Closest · 82</span>
+        <div class="sup-delta">⚠ 18oz capacity, not 20oz</div>
+      </div>
+      <div><span class="sup-meta-k">Inventory</span><span class="sup-meta-v ok">Confirmed</span></div>
+      <div><span class="sup-meta-k">Ship from</span><span class="sup-meta-v">Bensalem PA</span></div>
+      <div><span class="sup-meta-k">Lead time</span><span class="sup-meta-v">10 days</span></div>
+      <div><span class="sup-meta-k">Last order</span><span class="sup-meta-v">3 months</span></div>
+    </div>
+
+    <div class="sup-row">
+      <input type="checkbox">
+      <div>
+        <div class="sup-name">Bullet Line <span class="tier tier-silver">Silver</span></div>
+        <div class="sup-rep">Manny Soto, AM</div>
+        <span class="match-score match-close">Closest · 74</span>
+        <div class="sup-delta">⚠ Pad print available, not laser</div>
+      </div>
+      <div><span class="sup-meta-k">Inventory</span><span class="sup-meta-v ok">Confirmed</span></div>
+      <div><span class="sup-meta-k">Ship from</span><span class="sup-meta-v">Hialeah FL</span></div>
+      <div><span class="sup-meta-k">Lead time</span><span class="sup-meta-v">9 days</span></div>
+      <div><span class="sup-meta-k">Last order</span><span class="sup-meta-v">Never</span></div>
+    </div>
+
+    <div class="excl-strip">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <div class="bold" style="font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted)">Filtered out, cannot ship in time</div>
+        <span class="faint" style="font-family:'JetBrains Mono',monospace;font-size:11px">3 suppliers</span>
+      </div>
+      <div class="excl-row">
+        <span><b>Hub Pen Co</b> <span class="tier tier-silver">Silver</span> · Closest match · Score 68</span>
+        <span class="excl-reason">Out of stock on Navy</span>
+      </div>
+      <div class="excl-row">
+        <span><b>SnugZ USA</b> <span class="tier tier-silver">Silver</span> · Closest match · Score 63</span>
+        <span class="excl-reason">Lead time misses in-hands by 4 days</span>
+      </div>
+      <div class="excl-row">
+        <span><b>Goldstar</b> <span class="tier tier-silver">Silver</span> · Closest match · Score 61</span>
+        <span class="excl-reason">Out of stock on Crimson and Forest</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:var(--paper);border-radius:var(--radius-lg);box-shadow:var(--shadow-card)">
+    <button class="btn btn-secondary" onclick="window.location.href='03-step2-brief.html'">← Back to brief</button>
+    <div class="row-tight" style="align-items:center">
+      <span class="muted" style="font-size:13px">BruMate, HPG, Garyline selected</span>
+      <button class="btn btn-primary" data-next="05-step4-review.html">Continue to review →</button>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('seller', {
+    sellerHref: '04-step3-suppliers.html',
+    supplierHref: '../supplier/01-inbox.html'
+  });
+</script>
+</body>
+</html>

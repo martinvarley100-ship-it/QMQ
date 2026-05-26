@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RFM trend, Distributor #432</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+<style>
+.trend-chart {
+  background: var(--canvas);
+  border-radius: 10px;
+  padding: 24px;
+  position: relative;
+  height: 240px;
+}
+.trend-svg { width: 100%; height: 100%; }
+.legend-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+.legend-dot {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+</style>
+</head>
+<body>
+
+<div id="rail-host" data-side="supplier-dave" data-active="rfm"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>Distributor #432, RFM trend</h1>
+        <div class="subtitle">Recency dropped from 8 to 4 in 60 days. $34k annual spend at risk.</div>
+      </div>
+    </div>
+    <div class="page-actions">
+      <button class="btn btn-secondary" onclick="window.location.href='06-rfm-heatmap.html'">← Back to heatmap</button>
+      <button class="btn btn-primary btn-sm" data-toast-only="Re-engagement task assigned to Mike">Assign re-engagement task</button>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="stat-label">Annual spend</div>
+      <div class="stat-value">$34,200</div>
+      <div class="stat-trend down">▼ 28% from prior 12m</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Days since last order</div>
+      <div class="stat-value">89</div>
+      <div class="stat-sub">vs 28d average</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Orders, last 12m</div>
+      <div class="stat-value">7</div>
+      <div class="stat-sub">Down from 13 prior 12m</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Avg order value</div>
+      <div class="stat-value">$4,886</div>
+      <div class="stat-trend up">▲ stable</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h"><h3>RFM trend, last 12 months</h3><span class="pill pill-danger">R-drop alert active</span></div>
+
+    <div class="trend-chart">
+      <svg class="trend-svg" viewBox="0 0 800 200" preserveAspectRatio="none">
+        <!-- Y axis grid -->
+        <line x1="40" y1="20" x2="780" y2="20" stroke="#E5E7EB" stroke-width="1"/>
+        <line x1="40" y1="60" x2="780" y2="60" stroke="#E5E7EB" stroke-width="1"/>
+        <line x1="40" y1="100" x2="780" y2="100" stroke="#E5E7EB" stroke-width="1"/>
+        <line x1="40" y1="140" x2="780" y2="140" stroke="#E5E7EB" stroke-width="1"/>
+        <line x1="40" y1="180" x2="780" y2="180" stroke="#E5E7EB" stroke-width="1"/>
+
+        <!-- Y labels -->
+        <text x="30" y="24" text-anchor="end" font-size="10" fill="#9CA3AF">10</text>
+        <text x="30" y="64" text-anchor="end" font-size="10" fill="#9CA3AF">8</text>
+        <text x="30" y="104" text-anchor="end" font-size="10" fill="#9CA3AF">6</text>
+        <text x="30" y="144" text-anchor="end" font-size="10" fill="#9CA3AF">4</text>
+        <text x="30" y="184" text-anchor="end" font-size="10" fill="#9CA3AF">2</text>
+
+        <!-- F line, steady -->
+        <polyline points="60,60 120,60 180,60 240,60 300,60 360,60 420,60 480,80 540,80 600,80 660,60 720,60" stroke="#10B981" stroke-width="2.5" fill="none" />
+
+        <!-- M line, climbing -->
+        <polyline points="60,80 120,80 180,80 240,60 300,60 360,40 420,40 480,40 540,40 600,40 660,40 720,40" stroke="#3B82F6" stroke-width="2.5" fill="none" />
+
+        <!-- R line, dropping -->
+        <polyline points="60,40 120,40 180,40 240,40 300,40 360,60 420,60 480,80 540,100 600,140 660,140 720,140" stroke="#F5B027" stroke-width="3" fill="none" />
+
+        <!-- R drop alert zone -->
+        <rect x="540" y="20" width="240" height="180" fill="#DC2626" opacity="0.04"/>
+        <line x1="540" y1="20" x2="540" y2="200" stroke="#DC2626" stroke-width="1" stroke-dasharray="4 4"/>
+        <text x="660" y="36" text-anchor="middle" font-size="11" fill="#DC2626" font-weight="700">R drop period</text>
+
+        <!-- X labels -->
+        <text x="60" y="200" text-anchor="middle" font-size="10" fill="#9CA3AF">Jun '25</text>
+        <text x="180" y="200" text-anchor="middle" font-size="10" fill="#9CA3AF">Aug</text>
+        <text x="300" y="200" text-anchor="middle" font-size="10" fill="#9CA3AF">Oct</text>
+        <text x="420" y="200" text-anchor="middle" font-size="10" fill="#9CA3AF">Dec</text>
+        <text x="540" y="200" text-anchor="middle" font-size="10" fill="#9CA3AF">Feb '26</text>
+        <text x="660" y="200" text-anchor="middle" font-size="10" fill="#9CA3AF">Apr</text>
+        <text x="720" y="200" text-anchor="middle" font-size="10" fill="#9CA3AF">Today</text>
+
+        <!-- Current dots -->
+        <circle cx="720" cy="60" r="5" fill="#10B981" />
+        <circle cx="720" cy="40" r="5" fill="#3B82F6" />
+        <circle cx="720" cy="140" r="5" fill="#F5B027" />
+      </svg>
+    </div>
+
+    <div class="legend-row">
+      <div><span class="legend-dot" style="background:#F5B027"></span><b>Recency</b> · current 4 (was 8)</div>
+      <div><span class="legend-dot" style="background:#10B981"></span><b>Frequency</b> · current 7 (stable)</div>
+      <div><span class="legend-dot" style="background:#3B82F6"></span><b>Monetary</b> · current 8 (climbing)</div>
+    </div>
+
+    <div style="margin-top:18px;padding:16px;background:var(--gold-soft);border-radius:10px;font-size:13px;color:var(--ink-muted);line-height:1.65">
+      <b style="color:var(--gold)">Read.</b> Frequency and Monetary are healthy. Recency cliff started in Feb 2026. This distributor has not gone cold, they have shifted some quote volume to another supplier or paused projects. A re-engagement call (not a discount-led approach) is the right play, with a check on whether their end-client base has changed.
+    </div>
+  </div>
+
+  <div style="margin-top:20px;display:grid;grid-template-columns:1.2fr 1fr;gap:16px">
+    <div class="card">
+      <div class="card-h"><h3>Recent order history</h3></div>
+      <table class="table">
+        <thead><tr><th>Date</th><th>Product</th><th class="right">Qty</th><th class="right">Value</th></tr></thead>
+        <tbody>
+          <tr><td>26 Feb 2026</td><td>OEM 20oz Tumbler</td><td class="right mono">2,200</td><td class="right mono">$11,440</td></tr>
+          <tr><td>14 Jan 2026</td><td>22oz Sport Bottle</td><td class="right mono">1,500</td><td class="right mono">$7,800</td></tr>
+          <tr><td>22 Nov 2025</td><td>16oz Travel Mug</td><td class="right mono">3,000</td><td class="right mono">$15,000</td></tr>
+        </tbody>
+      </table>
+      <p class="faint" style="font-size:11px;margin-top:10px">Last order 89 days ago. Average gap before R drop was 28 days.</p>
+    </div>
+    <div class="card">
+      <div class="card-h"><h3>Recommended next step</h3></div>
+      <ol style="font-size:13px;line-height:1.75;padding-left:18px;color:var(--ink-muted)">
+        <li>Personal call from rep, no commercial agenda</li>
+        <li>Check if end-client base has shifted</li>
+        <li>Offer to host a sample run for a current project</li>
+        <li>Do not lead with discount, that signals dependence</li>
+      </ol>
+      <button class="btn btn-primary btn-block" style="margin-top:14px" data-toast-only="Re-engagement task created in HubSpot">Create re-engagement task</button>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('supplier', {
+    sellerHref: '../seller/01-qmq-dashboard.html',
+    supplierHref: '12-rfm-trend.html'
+  });
+</script>
+</body>
+</html>

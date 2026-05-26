@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Step 1, pick the product, QMQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+</head>
+<body>
+
+<div id="rail-host" data-side="seller" data-active="qmq"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>New quote request</h1>
+        <div class="subtitle">Step 1 of 4, pick the product you are quoting.</div>
+      </div>
+    </div>
+    <div class="page-actions">
+      <button class="btn btn-ghost" data-toast-only="Draft saved">Save draft</button>
+      <button class="btn btn-ghost" onclick="window.location.href='01-qmq-dashboard.html'">Cancel</button>
+    </div>
+  </div>
+
+  <div class="stepper">
+    <div class="step active"><div class="step-num">1</div>Product</div>
+    <div class="step-arrow">›</div>
+    <div class="step"><div class="step-num">2</div>Brief</div>
+    <div class="step-arrow">›</div>
+    <div class="step"><div class="step-num">3</div>Suppliers</div>
+    <div class="step-arrow">›</div>
+    <div class="step"><div class="step-num">4</div>Review &amp; send</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:20px">
+    <div class="card">
+      <div class="card-section-h">
+        <div class="icon-sq"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <h4>Find the product</h4>
+      </div>
+      <input class="input input-large" value="20oz tumbler" placeholder="Search by name, SKU, or category…">
+      <div class="field-hint">Searching across the AIM catalogue, 60,000+ products from 167 VIP suppliers.</div>
+
+      <div style="margin-top:24px">
+        <div class="field-label">Search results, 11 matching products</div>
+
+        <div style="border:2px solid var(--gold);border-radius:var(--radius-lg);padding:16px;background:var(--gold-soft);margin-bottom:12px;cursor:pointer">
+          <div style="display:flex;gap:14px;align-items:center">
+            <div style="width:64px;height:64px;background:var(--paper);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:28px">🥤</div>
+            <div style="flex:1">
+              <div class="bold" style="font-size:15px">OEM 20oz Insulated Tumbler</div>
+              <div class="faint" style="font-size:12px;margin-top:2px">Catalogue ID 209441 · Drinkware · Powder coat, push-fit lid</div>
+              <div style="display:flex;gap:6px;margin-top:8px">
+                <span class="pill pill-gold">Selected</span>
+                <span class="pill pill-info">4 direct matches</span>
+                <span class="pill pill-grey">7 closest matches</span>
+              </div>
+            </div>
+            <div class="bold" style="color:var(--gold)">Selected ✓</div>
+          </div>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:12px;cursor:pointer;opacity:0.8">
+          <div style="display:flex;gap:14px;align-items:center">
+            <div style="width:64px;height:64px;background:var(--canvas);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:28px">🍶</div>
+            <div style="flex:1">
+              <div class="bold" style="font-size:15px">22oz Sport Bottle</div>
+              <div class="faint" style="font-size:12px;margin-top:2px">Catalogue ID 209228 · Drinkware</div>
+            </div>
+            <span class="muted" style="font-size:12px">Select</span>
+          </div>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:12px;cursor:pointer;opacity:0.8">
+          <div style="display:flex;gap:14px;align-items:center">
+            <div style="width:64px;height:64px;background:var(--canvas);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:28px">☕</div>
+            <div style="flex:1">
+              <div class="bold" style="font-size:15px">16oz Travel Mug, ceramic core</div>
+              <div class="faint" style="font-size:12px;margin-top:2px">Catalogue ID 209311 · Drinkware</div>
+            </div>
+            <span class="muted" style="font-size:12px">Select</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-section-h">
+        <div class="icon-sq" style="background:var(--success-soft);color:var(--success)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <h4>Product Match</h4>
+      </div>
+      <p class="muted" style="font-size:13px;margin-bottom:14px">Pre-computed score for every OEM equivalent across the AIM supplier base. Direct matches share the same SKU. Closest matches are OEM equivalents above 60% similarity.</p>
+
+      <div style="padding:12px;background:var(--canvas);border-radius:8px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div class="bold" style="font-size:13px">Direct match</div>
+          <div class="faint" style="font-size:11px">Same SKU, score 100</div>
+        </div>
+        <div style="font-size:20px;font-weight:700;color:var(--success)">4</div>
+      </div>
+      <div style="padding:12px;background:var(--canvas);border-radius:8px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div class="bold" style="font-size:13px">Closest match</div>
+          <div class="faint" style="font-size:11px">Score 60 to 99</div>
+        </div>
+        <div style="font-size:20px;font-weight:700;color:var(--warn)">7</div>
+      </div>
+
+      <button class="btn btn-secondary btn-block btn-sm" data-toast-only="Match explorer is in the next view">Explore matches →</button>
+
+      <div style="margin-top:18px;padding:12px;background:var(--gold-soft);border-radius:8px;font-size:12px;color:var(--ink-muted);line-height:1.5">
+        <b style="color:var(--gold)">Why this matters.</b> Direct matches are the same SKU at multiple suppliers. Closest matches are equivalent products with small spec differences (matte vs powder coat, screw-top vs push-fit). Including closest matches gives you 75% more viable suppliers per brief.
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:var(--paper);border-radius:var(--radius-lg);box-shadow:var(--shadow-card)">
+    <button class="btn btn-secondary" onclick="window.location.href='01-qmq-dashboard.html'">← Back to dashboard</button>
+    <div class="row-tight" style="align-items:center">
+      <span class="muted" style="font-size:13px">OEM 20oz Tumbler selected</span>
+      <button class="btn btn-primary" data-next="03-step2-brief.html">Continue to brief →</button>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('seller', {
+    sellerHref: '02-step1-product.html',
+    supplierHref: '../supplier/01-inbox.html'
+  });
+</script>
+</body>
+</html>

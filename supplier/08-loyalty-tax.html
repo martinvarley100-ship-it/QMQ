@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loyalty Tax Model, AimIQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+<style>
+.actor-card {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  border-top: 4px solid;
+}
+.actor-card.distributor { border-color: var(--info); }
+.actor-card.incumbent { border-color: var(--success); }
+.actor-card.challenger { border-color: var(--gold); }
+.actor-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+.actor-card .sub { font-size: 11px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 14px; }
+.actor-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 13px;
+}
+.actor-row:last-child { border: none; }
+.formula-box {
+  background: var(--canvas);
+  border-radius: 12px;
+  padding: 28px 36px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.8;
+}
+.formula-box .var {
+  background: var(--gold-soft);
+  color: var(--gold);
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-weight: 700;
+}
+.formula-box .var.green { background: var(--success-soft); color: var(--success); }
+.formula-box .var.info { background: var(--info-soft); color: var(--info); }
+</style>
+</head>
+<body>
+
+<div id="rail-host" data-side="supplier-dave" data-active="loyalty"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>The Loyalty Tax model</h1>
+        <div class="subtitle">How the same brief is priced for three different actors. Built on 200,000+ AIM orders.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px">
+    <p style="font-size:14px;line-height:1.6;color:var(--ink-muted)">
+      <b style="color:var(--ink)">The thesis.</b> A loyal customer pays more to their incumbent supplier than a new customer would. The difference is real value, paid for switching cost, trust, and predictable performance. The Loyalty Tax model quantifies that premium, helping incumbents defend it and helping challengers know exactly what they have to beat.
+    </p>
+  </div>
+
+  <div class="grid-3" style="margin-bottom:24px">
+    <div class="actor-card distributor">
+      <h3>Jenna (distributor)</h3>
+      <div class="sub">Brightline Promo, Miami · RFM R9 F9 M8</div>
+      <p class="muted" style="font-size:13px;line-height:1.55;margin-bottom:14px">She sees all three quotes, ordered by total landed cost. She doesn't see the model behind the prices.</p>
+      <div class="actor-row"><span class="faint">She receives</span><b>BruMate $13,700</b></div>
+      <div class="actor-row"><span class="faint">She also sees</span><b>HPG $15,705</b></div>
+      <div class="actor-row"><span class="faint">She also sees</span><b>Garyline $14,230</b></div>
+      <div class="actor-row"><span class="faint">She chooses</span><b style="color:var(--success)">Incumbent BruMate</b></div>
+    </div>
+
+    <div class="actor-card incumbent">
+      <h3>Erica (incumbent)</h3>
+      <div class="sub">BruMate, Tampa · 3 years with Brightline</div>
+      <p class="muted" style="font-size:13px;line-height:1.55;margin-bottom:14px">She sees what she has earned. The model tells her the defensible bid, the price the loyal customer will accept.</p>
+      <div class="actor-row"><span class="faint">Network typical</span><b class="mono">$5.40</b></div>
+      <div class="actor-row"><span class="faint">+ Loyalty Tax (R9 F9 M8)</span><b class="mono" style="color:var(--success)">+$0.34</b></div>
+      <div class="actor-row"><span class="faint">Defensible bid</span><b class="mono" style="font-size:15px">$5.74</b></div>
+      <div class="actor-row"><span class="faint">She bid</span><b class="mono">$5.18 (under floor)</b></div>
+    </div>
+
+    <div class="actor-card challenger">
+      <h3>Jen (challenger)</h3>
+      <div class="sub">Garyline, Greensboro NC · Never sold to Brightline</div>
+      <p class="muted" style="font-size:13px;line-height:1.55;margin-bottom:14px">She sees the threshold she has to clear, the price below which the incumbent's loyalty premium evaporates. She does not see the incumbent's name.</p>
+      <div class="actor-row"><span class="faint">Network typical</span><b class="mono">$5.40</b></div>
+      <div class="actor-row"><span class="faint">- Challenger discount</span><b class="mono" style="color:var(--gold)">-$0.34</b></div>
+      <div class="actor-row"><span class="faint">Breakable threshold (landed)</span><b class="mono" style="font-size:15px">$5.06</b></div>
+      <div class="actor-row"><span class="faint">She bid (landed)</span><b class="mono">$5.69 incl. freight</b></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px">
+    <div class="card-h"><h3>The formula</h3><span class="faint" style="font-size:11px">Simplified for illustration</span></div>
+
+    <div class="formula-box">
+      <div><span class="var info">Defensible bid</span> = <span class="var green">Network typical</span> + <span class="var">Loyalty Tax</span></div>
+      <div style="font-size:11px;color:var(--ink-faint);margin-top:14px;letter-spacing:0">where</div>
+      <div style="margin-top:8px"><span class="var">Loyalty Tax</span> = <span class="var green">Network typical</span> × <span class="var info">(R/10 × 0.04 + F/10 × 0.02 + M/10 × 0.01)</span></div>
+      <div style="font-size:11px;color:var(--ink-faint);margin-top:14px;letter-spacing:0;line-height:1.6">R, F, M each on a 0 to 10 scale.<br>Max Loyalty Tax = 7% of network typical at R=F=M=10.</div>
+    </div>
+
+    <div style="margin-top:20px;padding:14px 16px;background:var(--gold-soft);border-radius:8px;font-size:13px;color:var(--ink-muted);line-height:1.6">
+      <b style="color:var(--gold)">Worked example.</b> Brightline at R9 F9 M8 against BruMate. Loyalty Tax = $5.40 × (9/10 × 0.04 + 9/10 × 0.02 + 8/10 × 0.01) = $5.40 × 0.062 = $0.33. Round to $0.34. Defensible bid = $5.40 + $0.34 = $5.74. Below network typical Low band of $5.40, BruMate is leaving money on the table.
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-section-h">
+        <div class="icon-sq" style="background:var(--success-soft);color:var(--success)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7v10l10 5 10-5V7l-10-5z"/></svg></div>
+        <h4>If you are the incumbent</h4>
+      </div>
+      <p style="font-size:13px;color:var(--ink-muted);line-height:1.7">The Loyalty Tax tells you what your relationship is worth in pricing terms. On Pro tier we surface it on every bid where R, F, and M sum to 18 or higher. Below your defensible bid, you are giving away margin. Above by more than 10%, you risk the challenger winning.</p>
+    </div>
+    <div class="card">
+      <div class="card-section-h">
+        <div class="icon-sq" style="background:var(--gold-soft);color:var(--gold)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h4>If you are the challenger</h4>
+      </div>
+      <p style="font-size:13px;color:var(--ink-muted);line-height:1.7">The model shows you the threshold without naming the incumbent. You see "the incumbent has a $0.34 advantage built in," not who they are. To win, your landed price needs to clear that threshold, not necessarily by much. Often the freight differential is what closes the gap.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;padding:18px 22px;background:var(--canvas);border-radius:var(--radius-lg);font-size:13px;color:var(--ink-muted);line-height:1.6">
+    <b>Where the data comes from.</b> 200,000+ orders across the AIM distributor base over the last 24 months. Privacy filtered at the API layer, minimum sample size 5, 7-year audit retention. No buyer-specific prices, no supplier names, no end-client identification. Reviewed and signed off by Parker Bagley.
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('supplier', {
+    sellerHref: '../seller/08-dashboard-replies-in.html',
+    supplierHref: '08-loyalty-tax.html'
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AimIQ Demo, Quote Me Quick</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/shell.css">
+</head>
+<body>
+
+<div id="rail-host" data-side="seller" data-active=""></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>AimIQ</h1>
+        <div class="subtitle">Your intelligent toolkit for the promotional products industry.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1200px">
+
+    <a class="tile" href="#" onclick="event.preventDefault()">
+      <div class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <h3>Search For Products</h3>
+      <p>Find any product in the AIM catalogue, with intelligent matching across colour, decoration method, and quantity.</p>
+      <div class="tile-foot">Continue <span>›</span></div>
+    </a>
+
+    <a class="tile" href="#" onclick="event.preventDefault()">
+      <div class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+      </div>
+      <h3>Lookup Inventory</h3>
+      <p>Check live stock across all 167 VIP suppliers, with colour-specific availability and projected ship times.</p>
+      <div class="tile-foot">Continue <span>›</span></div>
+    </a>
+
+    <a class="tile" href="#" onclick="event.preventDefault()">
+      <div class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <h3>Find a Logo</h3>
+      <p>Search the AIM logo library or upload your own. Vector and high-res raster supported.</p>
+      <div class="tile-foot">Continue <span>›</span></div>
+    </a>
+
+    <a class="tile" href="#" onclick="event.preventDefault()">
+      <div class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125 0-.943.746-1.688 1.688-1.688h1.997c3.104 0 5.642-2.515 5.642-5.812C22.1 6.286 17.55 2 12 2z"/></svg>
+      </div>
+      <h3>Product Mock Up</h3>
+      <p>Generate professional product mockups from a product image plus your logo, in any imprint method.</p>
+      <div class="tile-foot">Continue <span>›</span></div>
+    </a>
+
+    <a class="tile" href="seller/01-qmq-dashboard.html" style="position:relative;border:2px solid var(--gold)">
+      <div style="position:absolute;top:14px;right:14px">
+        <span class="pill pill-success">New</span>
+      </div>
+      <div class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h3>Quote Me Quick</h3>
+      <p>Send a brief to multiple suppliers, see all responses ordered by total landed cost. The fastest way to a real quote.</p>
+      <div class="tile-foot">Start a quote <span>›</span></div>
+    </a>
+
+    <a class="tile disabled" href="#" onclick="event.preventDefault()">
+      <div style="position:absolute;top:14px;right:14px"><span class="pill pill-grey">Coming soon</span></div>
+      <div class="tile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M11 3L8 9l4 12 4-12-3-6"/><path d="M2 9h20"/></svg>
+      </div>
+      <h3>VIP Suppliers</h3>
+      <p>Deeper directory of our 167 VIP supplier relationships, with rep profiles and capability cards.</p>
+      <div class="tile-foot">Continue <span>›</span></div>
+    </a>
+
+  </div>
+
+  <div style="margin-top:48px;max-width:1200px;padding:20px;background:var(--gold-soft);border-radius:var(--radius-lg);font-size:13px;color:var(--ink-muted);line-height:1.6">
+    <b style="color:var(--gold);font-weight:700">Demo note for Martin and Gareth.</b> This is an interactive prototype of Quote Me Quick (QMQ), built inside the AimIQ shell. Click the gold-bordered QMQ tile to walk Jenna's distributor journey end-to-end. A small toggle bottom-right of every page lets you switch to the supplier surface (Erica at BruMate or Jen at Garyline) to see how the same brief looks from the supplier side. The asymmetry of the two views is the product.
+  </div>
+</main>
+
+<script src="assets/shell.js"></script>
+</body>
+</html>

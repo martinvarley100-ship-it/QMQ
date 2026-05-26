@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tactical Surface, BruMate</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+<style>
+.tac-detail {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  border-left: 4px solid var(--info);
+  margin-bottom: 16px;
+}
+.tac-detail.idle { border-color: var(--warn); }
+.tac-detail.watch { border-color: var(--danger); }
+
+.tac-h {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+</style>
+</head>
+<body>
+
+<div id="rail-host" data-side="supplier-dave" data-active="tactical"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>Tactical surface</h1>
+        <div class="subtitle">Surplus inventory, idle capacity, and at-risk accounts. Configure how each surfaces in incoming bids.</div>
+      </div>
+    </div>
+    <div class="page-actions">
+      <span class="pill pill-success">Pro tier</span>
+    </div>
+  </div>
+
+  <div class="tac-detail">
+    <div class="tac-h">
+      <div>
+        <h3 style="font-size:17px;font-weight:700">Surplus inventory, OEM 20oz Tumbler Matte Black</h3>
+        <div class="faint" style="font-size:12px;margin-top:2px">Tampa warehouse · 4,200 pcs · Aged 67 days · Holding cost $0.04/pc/month</div>
+      </div>
+      <span class="pill pill-info">Surplus</span>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:16px">
+      <div style="padding:14px;background:var(--canvas);border-radius:8px">
+        <div class="faint" style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-weight:700">Standard cost</div>
+        <div class="bold mono" style="font-size:22px">$3.94</div>
+        <div class="faint" style="font-size:11px;margin-top:2px">Decorated, per piece</div>
+      </div>
+      <div style="padding:14px;background:var(--canvas);border-radius:8px">
+        <div class="faint" style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-weight:700">Standard bid floor</div>
+        <div class="bold mono" style="font-size:22px">$5.05</div>
+        <div class="faint" style="font-size:11px;margin-top:2px">Cost + 22% margin</div>
+      </div>
+      <div style="padding:14px;background:var(--gold-soft);border-radius:8px">
+        <div class="faint" style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-weight:700;color:var(--gold)">Suggested clearance bid</div>
+        <div class="bold mono" style="font-size:22px;color:var(--gold)">$4.62</div>
+        <div class="faint" style="font-size:11px;margin-top:2px;color:var(--gold)">14% margin, clears stock</div>
+      </div>
+    </div>
+
+    <div style="padding:18px;background:var(--canvas);border-radius:10px">
+      <div class="bold" style="font-size:13px;margin-bottom:12px">Auto-apply rule</div>
+      <div class="col">
+        <label class="row" style="align-items:center;cursor:pointer;font-size:13px">
+          <input type="checkbox" checked style="accent-color:var(--gold);width:16px;height:16px">
+          <span style="margin-left:10px">Apply clearance bid <b>$4.62</b> to incoming briefs that include Matte Black, until inventory is below 1,000 pcs</span>
+        </label>
+        <label class="row" style="align-items:center;cursor:pointer;font-size:13px">
+          <input type="checkbox" checked style="accent-color:var(--gold);width:16px;height:16px">
+          <span style="margin-left:10px">Show <b>✂ Free setup</b> flag on these bids to improve conversion</span>
+        </label>
+        <label class="row" style="align-items:center;cursor:pointer;font-size:13px">
+          <input type="checkbox" style="accent-color:var(--gold);width:16px;height:16px">
+          <span style="margin-left:10px">Notify Erica Hahn when an eligible bid lands</span>
+        </label>
+      </div>
+      <button class="btn btn-primary btn-sm" style="margin-top:14px" data-toast-only="Tactical rule saved, active on next incoming brief">Save tactical rule</button>
+    </div>
+  </div>
+
+  <div class="tac-detail idle">
+    <div class="tac-h">
+      <div>
+        <h3 style="font-size:17px;font-weight:700">Idle capacity, Laser bay 3, week of 1 Dec</h3>
+        <div class="faint" style="font-size:12px;margin-top:2px">Forecast utilisation 38% · Capacity for 12,000 imprints unused</div>
+      </div>
+      <span class="pill pill-warn">Idle capacity</span>
+    </div>
+
+    <div style="padding:14px 16px;background:var(--canvas);border-radius:8px;font-size:13px;color:var(--ink-muted);line-height:1.6">
+      <b style="color:var(--ink)">Auto-action.</b> Show <b>⚡ Rush available</b> flag on briefs with in-hands dates between 8 Dec and 22 Dec where compression is possible. Adds 0.18 per piece to bids.
+    </div>
+  </div>
+
+  <div class="tac-detail watch">
+    <div class="tac-h">
+      <div>
+        <h3 style="font-size:17px;font-weight:700">Watch list, Distributor #432, Recency dropped 8 → 4</h3>
+        <div class="faint" style="font-size:12px;margin-top:2px">Last order 89 days ago · 12-month avg 28 days · $34k annual spend</div>
+      </div>
+      <span class="pill pill-danger">At risk</span>
+    </div>
+
+    <div style="padding:14px 16px;background:var(--canvas);border-radius:8px;font-size:13px;color:var(--ink-muted);line-height:1.6">
+      <b style="color:var(--ink)">Recommended action.</b> Sales call within 7 days. They have not run a quote request in 89 days, which is well outside their pattern. Consider sending a "We've missed you" pricing flag with offer of free setup on next order.
+      <div style="margin-top:10px">
+        <button class="btn btn-primary btn-sm" data-toast-only="Re-engagement task created in HubSpot for Erica">Create re-engagement task</button>
+        <button class="btn btn-secondary btn-sm" style="margin-left:6px" onclick="window.location.href='12-rfm-trend.html'">View trend</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('supplier', {
+    sellerHref: '../seller/08-dashboard-replies-in.html',
+    supplierHref: '07-tactical.html'
+  });
+</script>
+</body>
+</html>

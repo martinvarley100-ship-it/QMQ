@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR-2026-00482, all replies in</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+<style>
+.sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: var(--canvas);
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+.sort-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--ink-faint);
+  font-weight: 700;
+}
+.sort-pills {
+  display: flex;
+  gap: 4px;
+}
+.sort-opt {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 7px 14px;
+  border-radius: 7px;
+  font-size: 12px;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+.sort-opt:hover { background: var(--paper); }
+.sort-opt.active {
+  background: var(--gold);
+  color: var(--paper);
+  border-color: var(--gold);
+}
+.sort-dir {
+  margin-left: auto;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  padding: 7px 12px;
+  border-radius: 7px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+.cmp-row {
+  display: grid;
+  grid-template-columns: 36px 1fr 160px 1fr 110px 110px 130px;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  background: var(--paper);
+  align-items: center;
+}
+.cmp-row.best { border-color: var(--gold); border-width: 2px; }
+.cmp-row.est { background: var(--gold-soft); border-color: var(--gold); border-style: dashed; }
+.cmp-rank {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink-faint);
+  text-align: center;
+}
+.cmp-rank.r1 { color: var(--gold); }
+.cmp-sup-name { font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+.cmp-sup-rep { font-size: 11px; color: var(--ink-faint); margin-top: 2px; }
+.cmp-match {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 700;
+  margin-top: 6px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.cmp-match.direct { background: var(--success-soft); color: var(--success); }
+.cmp-match.close { background: var(--warn-soft); color: var(--warn); }
+.cmp-delta { font-size: 11px; color: var(--warn); margin-top: 4px; font-style: italic; }
+.cmp-price-block {
+  background: var(--canvas);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+.cmp-price-block.best { background: var(--gold-soft); border: 1px solid var(--gold); }
+.cmp-tco-l { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--ink-faint); font-weight: 700; }
+.cmp-tco { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; color: var(--ink); }
+.cmp-tco.best { color: var(--gold); }
+.cmp-pp { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-faint); margin-top: 2px; }
+.cmp-offers {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.cmp-offer {
+  font-size: 9px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  padding: 2px 5px;
+  border-radius: 3px;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+.cmp-offer.on { background: var(--gold-soft); border-color: var(--gold); color: var(--gold); }
+.cmp-extras { font-size: 12px; color: var(--ink-muted); line-height: 1.6; }
+.cmp-extras b { color: var(--ink); }
+.cmp-distance-cell { font-size: 12px; }
+.cmp-miles { font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+.cmp-co2 { font-size: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 600; margin-top: 2px; }
+.cmp-co2.low { color: var(--success); }
+.cmp-co2.med { color: var(--gold); }
+.cmp-co2.hi { color: var(--warn); }
+.cmp-co2.veryhi { color: var(--danger); }
+.cmp-lead { font-size: 12px; }
+.cmp-lead-date { font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+.cmp-lead-days { font-size: 10px; color: var(--ink-faint); margin-top: 2px; }
+.cmp-actions { display: flex; flex-direction: column; gap: 6px; }
+.cmp-btn-sm {
+  font-size: 11px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-family: inherit;
+  text-align: center;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  color: var(--ink);
+}
+.cmp-btn-sm:hover { background: var(--canvas); }
+.cmp-btn-sm.primary { background: var(--gold); color: var(--paper); border-color: var(--gold); }
+.cmp-btn-sm.primary:hover { background: var(--gold-hover); }
+</style>
+</head>
+<body>
+
+<div id="rail-host" data-side="seller" data-active="qmq"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>QR-2026-00482</h1>
+        <div class="subtitle">OEM 20oz Tumbler · 2,500 pcs · All replies in · Ordered by total landed cost.</div>
+      </div>
+    </div>
+    <div class="page-actions">
+      <span class="pill pill-success">All replies in</span>
+      <button class="btn btn-secondary" data-toast-only="Comparison exported as PDF">Export PDF</button>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="stat-label">Best TCO</div>
+      <div class="stat-value">$13,700</div>
+      <div class="stat-sub">BruMate Wholesale</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Headline range</div>
+      <div class="stat-value" style="font-size:22px">$5.06 to $6.10</div>
+      <div class="stat-sub">Per piece, before extras and freight</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">TCO spread</div>
+      <div class="stat-value">$1,520</div>
+      <div class="stat-sub">Lowest to highest total</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Time to full reply</div>
+      <div class="stat-value">42m</div>
+      <div class="stat-sub">All within SLA</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">
+      <h3>Network pricing context, OEM 20oz Tumbler, 2,000 to 3,000 pcs</h3>
+      <span class="faint" style="font-size:11px;font-family:'JetBrains Mono',monospace;letter-spacing:0.3px">E&amp;OE · 89 matching orders · 6 month window</span>
+    </div>
+
+    <div class="price-chart">
+      <div class="pc-zones">
+        <div class="pc-zone low"><div class="pc-zone-label">Low</div><div class="pc-zone-range">$4.85 to $5.40</div></div>
+        <div class="pc-zone typ"><div class="pc-zone-label">Typical</div><div class="pc-zone-range">$5.40 to $6.25</div></div>
+        <div class="pc-zone high"><div class="pc-zone-label">High</div><div class="pc-zone-range">$6.25 to $7.10</div></div>
+      </div>
+      <div class="pc-marker" style="left:14.7%;background:var(--info)"><div class="pc-marker-label">BruMate $5.18</div></div>
+      <div class="pc-marker" style="left:9.3%;background:var(--paper);border:2px dashed var(--info)"><div class="pc-marker-label">Garyline $5.06</div></div>
+      <div class="pc-marker" style="left:48.9%;background:var(--warn)"><div class="pc-marker-label">HPG $5.95</div></div>
+      <div class="pc-marker" style="left:55.6%;background:var(--paper);border:2px dashed var(--warn)"><div class="pc-marker-label">Spector $6.10</div></div>
+      <div class="pc-marker" style="left:44.4%;background:var(--gold)"><div class="pc-marker-label" style="color:var(--gold);font-weight:700">Est $5.85</div></div>
+    </div>
+
+    <div class="pc-foot">
+      <span><b>Direct match</b> ● solid · <b>Closest match</b> ◯ dashed · <b>System estimate</b> ● gold</span>
+      <span>Confidence high</span>
+    </div>
+  </div>
+
+  <div class="spacer-md"></div>
+
+  <div class="card">
+    <div class="card-h">
+      <h3>4 supplier responses</h3>
+    </div>
+
+    <div class="sort-bar">
+      <span class="sort-label">Sort by</span>
+      <div class="sort-pills">
+        <button class="sort-opt">Product price</button>
+        <button class="sort-opt active">Total price (TCO)</button>
+        <button class="sort-opt">Lead time</button>
+        <button class="sort-opt">Distance</button>
+      </div>
+      <button class="sort-dir">↑ Asc</button>
+    </div>
+
+    <div class="cmp-row best">
+      <div class="cmp-rank r1">1</div>
+      <div>
+        <div class="cmp-sup-name">BruMate Wholesale <span class="tier tier-platinum">Platinum</span></div>
+        <div class="cmp-sup-rep">Erica Hahn · Tampa FL</div>
+        <span class="cmp-match direct">Direct · 100</span>
+      </div>
+      <div class="cmp-price-block best">
+        <div class="cmp-tco-l">TCO</div>
+        <div class="cmp-tco best">$13,700</div>
+        <div class="cmp-pp">$5.18/pc + extras + freight</div>
+        <div class="cmp-offers">
+          <span class="cmp-offer on">★ 2x</span>
+          <span class="cmp-offer on">⚡ Rush</span>
+          <span class="cmp-offer on">✓ Stock</span>
+        </div>
+      </div>
+      <div class="cmp-extras">
+        Setup $40, mixed colour $0.08/pc<br>
+        Sub-total <b>$13,290</b><br>
+        Freight $410 Tampa to Miami
+      </div>
+      <div class="cmp-distance-cell">
+        <div class="cmp-miles">270 mi</div>
+        <div class="cmp-co2 low">11 kg CO2e</div>
+        <div class="faint" style="font-size:10px;margin-top:2px">est. per order</div>
+      </div>
+      <div class="cmp-lead">
+        <div class="cmp-lead-date">10 Dec</div>
+        <div class="cmp-lead-days">10 day lead</div>
+      </div>
+      <div class="cmp-actions">
+        <button class="cmp-btn-sm primary" onclick="window.location.href='10-convert-to-po.html'">Convert to PO →</button>
+        <button class="cmp-btn-sm" onclick="window.location.href='11-pdf-quote.html'">↓ PDF quote</button>
+        <button class="cmp-btn-sm" onclick="window.location.href='09-supplier-detail.html'">View detail</button>
+      </div>
+    </div>
+
+    <div class="cmp-row">
+      <div class="cmp-rank">2</div>
+      <div>
+        <div class="cmp-sup-name">Garyline Drinkware <span class="tier tier-gold">Gold</span></div>
+        <div class="cmp-sup-rep">Jen Walker · Greensboro NC</div>
+        <span class="cmp-match close">Closest · 94</span>
+        <div class="cmp-delta">⚠ Matte coating, not powder coat</div>
+      </div>
+      <div class="cmp-price-block">
+        <div class="cmp-tco-l">TCO</div>
+        <div class="cmp-tco">$14,230</div>
+        <div class="cmp-pp">$5.06/pc + extras + freight</div>
+        <div class="cmp-offers">
+          <span class="cmp-offer on">✂ Free Setup</span>
+          <span class="cmp-offer on">✓ Stock</span>
+        </div>
+      </div>
+      <div class="cmp-extras">
+        Setup $0 waived, mixed colour $0.10/pc<br>
+        Sub-total <b>$12,900</b><br>
+        Freight $1,180 Greensboro to Miami
+      </div>
+      <div class="cmp-distance-cell">
+        <div class="cmp-miles">720 mi</div>
+        <div class="cmp-co2 med">29 kg CO2e</div>
+        <div class="faint" style="font-size:10px;margin-top:2px">est. per order</div>
+      </div>
+      <div class="cmp-lead">
+        <div class="cmp-lead-date">11 Dec</div>
+        <div class="cmp-lead-days">11 day lead</div>
+      </div>
+      <div class="cmp-actions">
+        <button class="cmp-btn-sm primary" onclick="window.location.href='10-convert-to-po.html'">Convert to PO →</button>
+        <button class="cmp-btn-sm" onclick="window.location.href='11-pdf-quote.html'">↓ PDF quote</button>
+        <button class="cmp-btn-sm" onclick="window.location.href='09-supplier-detail.html'">View detail</button>
+      </div>
+    </div>
+
+    <div class="cmp-row">
+      <div class="cmp-rank">3</div>
+      <div>
+        <div class="cmp-sup-name">HPG Brands <span class="tier tier-brand">Brand Partner</span></div>
+        <div class="cmp-sup-rep">Marcus Tate · Cincinnati OH</div>
+        <span class="cmp-match direct">Direct · 100</span>
+      </div>
+      <div class="cmp-price-block">
+        <div class="cmp-tco-l">TCO</div>
+        <div class="cmp-tco">$15,705</div>
+        <div class="cmp-pp">$5.95/pc + extras + freight</div>
+        <div class="cmp-offers">
+          <span class="cmp-offer on">★ 2x</span>
+          <span class="cmp-offer on">N30</span>
+        </div>
+      </div>
+      <div class="cmp-extras">
+        Setup $50, mixed colour $0.10/pc<br>
+        Sub-total <b>$15,175</b><br>
+        Freight $530 Cincinnati to Miami
+      </div>
+      <div class="cmp-distance-cell">
+        <div class="cmp-miles">1,180 mi</div>
+        <div class="cmp-co2 hi">48 kg CO2e</div>
+        <div class="faint" style="font-size:10px;margin-top:2px">est. per order</div>
+      </div>
+      <div class="cmp-lead">
+        <div class="cmp-lead-date">12 Dec</div>
+        <div class="cmp-lead-days">12 day lead</div>
+      </div>
+      <div class="cmp-actions">
+        <button class="cmp-btn-sm primary" onclick="window.location.href='10-convert-to-po.html'">Convert to PO →</button>
+        <button class="cmp-btn-sm" onclick="window.location.href='11-pdf-quote.html'">↓ PDF quote</button>
+        <button class="cmp-btn-sm" onclick="window.location.href='09-supplier-detail.html'">View detail</button>
+      </div>
+    </div>
+
+    <div class="cmp-row est">
+      <div class="cmp-rank" style="color:var(--gold)">★</div>
+      <div>
+        <span class="pill pill-gold" style="margin-bottom:6px;display:inline-block">AimIQ Estimate</span>
+        <div class="cmp-sup-name">Auto-generated, network data</div>
+        <div class="cmp-sup-rep">200k+ AIM orders · 6 month window</div>
+        <span class="cmp-match" style="background:var(--paper);color:var(--gold);border:1px solid var(--gold)">E&amp;OE</span>
+      </div>
+      <div class="cmp-price-block" style="border:1px solid var(--gold);background:var(--paper)">
+        <div class="cmp-tco-l">EST TCO</div>
+        <div class="cmp-tco" style="color:var(--gold)">$15,540</div>
+        <div class="cmp-pp">$5.85/pc midpoint</div>
+      </div>
+      <div class="cmp-extras">
+        Modelled setup $45, modelled upcharge $0.08/pc<br>
+        <b>$5.40 to $6.25</b> typical range<br>
+        Freight at network median
+      </div>
+      <div class="cmp-distance-cell">
+        <div class="cmp-miles">~990 mi</div>
+        <div class="cmp-co2 med">~40 kg CO2e</div>
+        <div class="faint" style="font-size:10px;margin-top:2px">network median</div>
+      </div>
+      <div class="cmp-lead">
+        <div class="cmp-lead-date">~12 Dec</div>
+        <div class="cmp-lead-days">11 day median</div>
+      </div>
+      <div class="cmp-actions">
+        <button class="cmp-btn-sm" data-toast-only="Estimate used as reference">Use estimate</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+    <div class="card">
+      <div class="card-section-h">
+        <div class="icon-sq"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <h4>Pattern</h4>
+      </div>
+      <p style="font-size:13px;line-height:1.55;color:var(--ink-muted)"><b style="color:var(--ink)">BruMate has won 7 of your last 9 tumbler briefs.</b> Erica Hahn comes in first on TCO 78% of the time at this quantity band. The Tampa freight advantage is hard to beat from your Miami ship-to.</p>
+    </div>
+    <div class="card">
+      <div class="card-section-h">
+        <div class="icon-sq" style="background:var(--info-soft);color:var(--info)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.66 17.6V11.5C9.66 10.1193 10.7793 9 12.16 9C13.5407 9 14.66 10.1193 14.66 11.5V17.6"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <h4>Discovery</h4>
+      </div>
+      <p style="font-size:13px;line-height:1.55;color:var(--ink-muted)"><b style="color:var(--ink)">Garyline is 4% below BruMate on headline.</b> You have never bought from Garyline. They came in second on TCO despite the 700 mile freight gap. Worth a conversation about future bids with shorter lead time.</p>
+    </div>
+    <div class="card">
+      <div class="card-section-h">
+        <div class="icon-sq" style="background:var(--success-soft);color:var(--success)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h4>Tip</h4>
+      </div>
+      <p style="font-size:13px;line-height:1.55;color:var(--ink-muted)"><b style="color:var(--ink)">Save this brief as a template.</b> You have run a similar tumbler brief 5 times this quarter. Template would save you about 8 minutes per request.</p>
+      <button class="btn btn-secondary btn-sm" style="margin-top:10px" data-toast-only="Template saved to your library">Save as template</button>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('seller', {
+    sellerHref: '08-dashboard-replies-in.html',
+    supplierHref: '../supplier/02-bid-response-erica.html'
+  });
+</script>
+</body>
+</html>

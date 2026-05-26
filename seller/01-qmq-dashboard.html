@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QMQ Dashboard, AimIQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+</head>
+<body>
+
+<div id="rail-host" data-side="seller" data-active="qmq"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>Quote Me Quick</h1>
+        <div class="subtitle">Send a brief to multiple suppliers, receive ranked responses ordered by total landed cost.</div>
+      </div>
+    </div>
+    <div class="page-actions">
+      <button class="btn btn-secondary"><span>📊</span> Export history</button>
+      <button class="btn btn-primary" data-next="02-step1-product.html"><span>+</span> New quote</button>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="stat-label">Open requests</div>
+      <div class="stat-value">3</div>
+      <div class="stat-sub">Awaiting supplier replies</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Replies this week</div>
+      <div class="stat-value">24</div>
+      <div class="stat-trend up">▲ 7 vs prior week</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Avg time to full reply</div>
+      <div class="stat-value">38m</div>
+      <div class="stat-trend up">▼ 11m vs prior week</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Quotes converted to PO</div>
+      <div class="stat-value">68%</div>
+      <div class="stat-sub">Last 30 days</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">
+      <h3>Active and recent quotes</h3>
+      <div class="row-tight">
+        <button class="btn btn-ghost btn-sm">All</button>
+        <button class="btn btn-secondary btn-sm">Open</button>
+        <button class="btn btn-ghost btn-sm">Closed</button>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Reference</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>In hands</th>
+          <th>Status</th>
+          <th>Replies</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="cursor:pointer" onclick="window.location.href='08-dashboard-replies-in.html'">
+          <td class="mono bold">QR-2026-00482</td>
+          <td><b>OEM 20oz Tumbler</b><br><span class="faint" style="font-size:11px">Laser etch, mixed colour</span></td>
+          <td>2,500 pcs</td>
+          <td class="mono">14 Dec 2026</td>
+          <td><span class="pill pill-success">All replies in</span></td>
+          <td><b>4 of 4</b><br><span class="faint" style="font-size:11px">Including estimate</span></td>
+          <td><span style="color:var(--gold);font-weight:600">View ›</span></td>
+        </tr>
+        <tr style="cursor:pointer" onclick="window.location.href='07-dashboard-open.html'">
+          <td class="mono bold">QR-2026-00485</td>
+          <td><b>Gildan 5000 tee</b><br><span class="faint" style="font-size:11px">Screen print, 2 colours</span></td>
+          <td>600 pcs</td>
+          <td class="mono">28 Nov 2026</td>
+          <td><span class="pill pill-warn">2 of 4 in</span></td>
+          <td><b>2 of 4</b><br><span class="faint" style="font-size:11px">Waiting on 2</span></td>
+          <td><span style="color:var(--gold);font-weight:600">View ›</span></td>
+        </tr>
+        <tr>
+          <td class="mono bold">QR-2026-00478</td>
+          <td><b>Notebook A5, soft-touch</b><br><span class="faint" style="font-size:11px">Deboss</span></td>
+          <td>1,200 pcs</td>
+          <td class="mono">9 Jan 2027</td>
+          <td><span class="pill pill-grey">Draft</span></td>
+          <td>Not yet sent</td>
+          <td><span class="muted">Continue ›</span></td>
+        </tr>
+        <tr>
+          <td class="mono bold">QR-2026-00471</td>
+          <td><b>Twist pen, metal</b><br><span class="faint" style="font-size:11px">Laser, 1 location</span></td>
+          <td>1,000 pcs</td>
+          <td class="mono">21 Oct 2026</td>
+          <td><span class="pill pill-grey">Converted to PO</span></td>
+          <td><b>5 of 5</b></td>
+          <td><span class="muted">Archived ›</span></td>
+        </tr>
+        <tr>
+          <td class="mono bold">QR-2026-00465</td>
+          <td><b>Insulated tote</b><br><span class="faint" style="font-size:11px">Embroidery, 1 location</span></td>
+          <td>400 pcs</td>
+          <td class="mono">14 Oct 2026</td>
+          <td><span class="pill pill-grey">Converted to PO</span></td>
+          <td><b>4 of 4</b></td>
+          <td><span class="muted">Archived ›</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div class="card">
+      <div class="card-h no-rule"><h3>Saved brief templates</h3></div>
+      <p class="muted" style="font-size:13px;margin-bottom:14px">Templates speed up repeat briefs. Save any brief during Step 2 or after sending.</p>
+      <div class="col">
+        <div style="padding:14px;background:var(--canvas);border-radius:8px;display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div class="bold">Tumbler, mixed-colour, 2,500</div>
+            <div class="faint" style="font-size:11px">Used 5 times this quarter</div>
+          </div>
+          <button class="btn btn-ghost btn-sm">Use →</button>
+        </div>
+        <div style="padding:14px;background:var(--canvas);border-radius:8px;display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div class="bold">Tee shirt, 2-color print, 500-1000</div>
+            <div class="faint" style="font-size:11px">Used 3 times this quarter</div>
+          </div>
+          <button class="btn btn-ghost btn-sm">Use →</button>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="background:var(--gold-soft);border:1px solid var(--gold)">
+      <div class="card-h no-rule"><h3 style="color:var(--gold)">Tip of the week</h3></div>
+      <p style="font-size:13px;color:var(--ink-muted);line-height:1.6">
+        You ran 14 quote requests for drinkware last quarter, and BruMate won 11 of them on total landed cost. Worth saving "Drinkware, mixed colour, 2,000+" as a template, you can fire a new brief in under 60 seconds.
+      </p>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('seller', {
+    sellerHref: '01-qmq-dashboard.html',
+    supplierHref: '../supplier/04-supplier-dashboard.html'
+  });
+</script>
+</body>
+</html>

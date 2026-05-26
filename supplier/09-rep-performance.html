@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rep Performance, BruMate</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+</head>
+<body>
+
+<div id="rail-host" data-side="supplier-dave" data-active="reps"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>Rep performance</h1>
+        <div class="subtitle">Sales rep activity, response, and win rates. Anonymised between organisations, full visibility within yours.</div>
+      </div>
+    </div>
+    <div class="page-actions">
+      <span class="pill pill-success">Pro tier</span>
+      <button class="btn btn-secondary btn-sm">Export</button>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="stat-label">Active reps</div>
+      <div class="stat-value">6</div>
+      <div class="stat-sub">All on AimIQ Pro</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Team win rate</div>
+      <div class="stat-value">38%</div>
+      <div class="stat-sub">Range 24% to 51%</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Avg response time</div>
+      <div class="stat-value">28m</div>
+      <div class="stat-sub">Top rep 14m, bottom 52m</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Bids declined this month</div>
+      <div class="stat-value">11</div>
+      <div class="stat-sub">7 on inventory, 4 on lead time</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">
+      <h3>Rep leaderboard, last 30 days</h3>
+      <div class="row-tight">
+        <button class="btn btn-secondary btn-sm">By win rate</button>
+        <button class="btn btn-ghost btn-sm">By volume</button>
+        <button class="btn btn-ghost btn-sm">By avg rank</button>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Rep</th>
+          <th class="right">Bids submitted</th>
+          <th class="right">Response time</th>
+          <th class="right">Win rate</th>
+          <th class="right">Avg rank when not winning</th>
+          <th class="right">Spend won</th>
+          <th class="right">Loyalty Tax usage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:var(--success-soft)">
+          <td>
+            <div class="bold">Erica Hahn</div>
+            <div class="faint" style="font-size:11px">Director of Sales · 12 distributors</div>
+          </td>
+          <td class="right mono bold">23</td>
+          <td class="right mono">14m</td>
+          <td class="right"><b class="mono" style="color:var(--success);font-size:16px">51%</b></td>
+          <td class="right mono">1.8</td>
+          <td class="right mono bold">$184,000</td>
+          <td class="right"><span class="pill pill-success">High</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="bold">Mike Cordova</div>
+            <div class="faint" style="font-size:11px">Senior AM · 9 distributors</div>
+          </td>
+          <td class="right mono bold">18</td>
+          <td class="right mono">22m</td>
+          <td class="right"><b class="mono">44%</b></td>
+          <td class="right mono">2.0</td>
+          <td class="right mono">$112,000</td>
+          <td class="right"><span class="pill pill-success">High</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="bold">Linda Tran</div>
+            <div class="faint" style="font-size:11px">Strategic AM · 8 distributors</div>
+          </td>
+          <td class="right mono bold">16</td>
+          <td class="right mono">26m</td>
+          <td class="right"><b class="mono">38%</b></td>
+          <td class="right mono">2.1</td>
+          <td class="right mono">$98,400</td>
+          <td class="right"><span class="pill pill-warn">Medium</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="bold">Jose Marquez</div>
+            <div class="faint" style="font-size:11px">AM · 11 distributors</div>
+          </td>
+          <td class="right mono bold">21</td>
+          <td class="right mono">31m</td>
+          <td class="right"><b class="mono">33%</b></td>
+          <td class="right mono">2.3</td>
+          <td class="right mono">$76,200</td>
+          <td class="right"><span class="pill pill-warn">Medium</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="bold">Sarah Park</div>
+            <div class="faint" style="font-size:11px">AM · 6 distributors</div>
+          </td>
+          <td class="right mono bold">12</td>
+          <td class="right mono">38m</td>
+          <td class="right"><b class="mono">29%</b></td>
+          <td class="right mono">2.5</td>
+          <td class="right mono">$54,800</td>
+          <td class="right"><span class="pill pill-grey">Low</span></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="bold">Tom Bauer</div>
+            <div class="faint" style="font-size:11px">AM · 5 distributors</div>
+          </td>
+          <td class="right mono bold">9</td>
+          <td class="right mono">52m</td>
+          <td class="right"><b class="mono" style="color:var(--danger)">24%</b></td>
+          <td class="right mono">2.8</td>
+          <td class="right mono">$31,200</td>
+          <td class="right"><span class="pill pill-grey">Low</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:20px;padding:14px 16px;background:var(--gold-soft);border-radius:8px;font-size:13px;color:var(--ink-muted);line-height:1.6">
+      <b style="color:var(--gold)">Coaching cue.</b> Tom's response time of 52m correlates with his low win rate. Top reps respond inside 20m. He may also benefit from Loyalty Tax model training, his usage is below team average. Suggested action: pair him with Erica for a week.
+    </div>
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('supplier', {
+    sellerHref: '../seller/01-qmq-dashboard.html',
+    supplierHref: '09-rep-performance.html'
+  });
+</script>
+</body>
+</html>

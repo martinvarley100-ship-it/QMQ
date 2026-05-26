@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pending Quotes, AimIQ Supplier</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+</head>
+<body>
+
+<div id="rail-host" data-side="supplier-erica" data-active="inbox"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>Pending quote requests</h1>
+        <div class="subtitle">Distributor briefs needing a response. Click any row to open the bid context.</div>
+      </div>
+    </div>
+    <div class="page-actions">
+      <span class="pill pill-success">Insight tier</span>
+      <button class="btn btn-secondary btn-sm">Upgrade plan</button>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="stat-label">Pending requests</div>
+      <div class="stat-value">5</div>
+      <div class="stat-sub">2 due within 30 minutes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Replied this week</div>
+      <div class="stat-value">23</div>
+      <div class="stat-trend up">▲ 4 vs prior week</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Avg response time</div>
+      <div class="stat-value">28m</div>
+      <div class="stat-trend up">▼ 6m vs prior week</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Win rate (last 30d)</div>
+      <div class="stat-value">38%</div>
+      <div class="stat-sub">Industry median 22%</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h">
+      <h3>Inbox</h3>
+      <div class="row-tight">
+        <button class="btn btn-secondary btn-sm">All</button>
+        <button class="btn btn-ghost btn-sm">Hot (under 1hr)</button>
+        <button class="btn btn-ghost btn-sm">Strategic</button>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Reference</th>
+          <th>Distributor</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>SLA window</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="cursor:pointer;background:var(--gold-soft)" onclick="window.location.href='02-bid-response-erica.html'">
+          <td class="mono bold">QR-2026-00482</td>
+          <td>
+            <b>Brightline Promo</b>
+            <div class="faint" style="font-size:11px">Martin Varley · Miami FL</div>
+            <span class="pill pill-success" style="margin-top:6px">Loyal customer · 3 years</span>
+          </td>
+          <td>
+            <b>OEM 20oz Tumbler</b>
+            <div class="faint" style="font-size:11px">Laser etch, 5 colours</div>
+          </td>
+          <td><b>2,500</b><br><span class="faint" style="font-size:11px">In hands 14 Dec</span></td>
+          <td><b style="color:var(--danger)">42m left</b><br><span class="faint" style="font-size:11px">Out of 60m SLA</span></td>
+          <td><span class="pill pill-warn">Open, your turn</span></td>
+          <td><span style="color:var(--gold);font-weight:700">Bid now ›</span></td>
+        </tr>
+        <tr style="cursor:pointer">
+          <td class="mono bold">QR-2026-00479</td>
+          <td>
+            <b>Promote Inc</b>
+            <div class="faint" style="font-size:11px">Tyler Garner · Atlanta GA</div>
+          </td>
+          <td>
+            <b>22oz Sport Bottle</b>
+            <div class="faint" style="font-size:11px">Pad print, 2 colours</div>
+          </td>
+          <td><b>1,200</b><br><span class="faint" style="font-size:11px">In hands 5 Jan 27</span></td>
+          <td><b>2h 18m</b><br><span class="faint" style="font-size:11px">Out of 4h SLA</span></td>
+          <td><span class="pill pill-grey">Drafting</span></td>
+          <td><span class="muted" style="font-size:12px">Resume ›</span></td>
+        </tr>
+        <tr style="cursor:pointer">
+          <td class="mono bold">QR-2026-00475</td>
+          <td>
+            <b>Halo Branded Solutions</b>
+            <div class="faint" style="font-size:11px">Sarah Klein · Chicago IL</div>
+            <span class="pill pill-grey" style="margin-top:6px">First-time bidder</span>
+          </td>
+          <td>
+            <b>OEM 20oz Tumbler</b>
+            <div class="faint" style="font-size:11px">Sublimation, single colour</div>
+          </td>
+          <td><b>800</b><br><span class="faint" style="font-size:11px">In hands 22 Dec</span></td>
+          <td><b>3h 4m</b></td>
+          <td><span class="pill pill-warn">Open, your turn</span></td>
+          <td><span class="muted" style="font-size:12px">Bid ›</span></td>
+        </tr>
+        <tr style="cursor:pointer">
+          <td class="mono bold">QR-2026-00472</td>
+          <td>
+            <b>Fully Promoted (FW Mall)</b>
+            <div class="faint" style="font-size:11px">Brad Hannigan · Houston TX</div>
+          </td>
+          <td>
+            <b>16oz Travel Mug</b>
+            <div class="faint" style="font-size:11px">Laser etch, mixed colour</div>
+          </td>
+          <td><b>3,600</b><br><span class="faint" style="font-size:11px">In hands 18 Nov</span></td>
+          <td><b>11h 52m</b></td>
+          <td><span class="pill pill-info">Open</span></td>
+          <td><span class="muted" style="font-size:12px">Bid ›</span></td>
+        </tr>
+        <tr style="cursor:pointer">
+          <td class="mono bold">QR-2026-00468</td>
+          <td>
+            <b>Geiger</b>
+            <div class="faint" style="font-size:11px">Pam Verzola · Lewiston ME</div>
+          </td>
+          <td>
+            <b>OEM 20oz Tumbler</b>
+            <div class="faint" style="font-size:11px">Laser etch, 3 colours</div>
+          </td>
+          <td><b>5,000</b><br><span class="faint" style="font-size:11px">In hands 30 Jan 27</span></td>
+          <td><b>1d 4h</b></td>
+          <td><span class="pill pill-info">Open</span></td>
+          <td><span class="muted" style="font-size:12px">Bid ›</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:18px;padding:14px 16px;background:var(--gold-soft);border-radius:10px;font-size:13px;color:var(--ink-muted);line-height:1.6">
+    <b style="color:var(--gold)">Insight tier reminder.</b> You see network pricing and customer context on every bid. Upgrade to Pro for win/loss outcomes, RFM heatmap, and the tactical surface that surfaces your surplus inventory to bids in real time.
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('supplier', {
+    sellerHref: '../seller/07-dashboard-open.html',
+    supplierHref: '01-inbox.html'
+  });
+</script>
+</body>
+</html>

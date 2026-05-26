@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supplier Dashboard, BruMate</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+<style>
+.wl-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1.2fr 90px 100px 120px 130px;
+  gap: 14px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-soft);
+  align-items: center;
+  font-size: 13px;
+}
+.wl-row:last-child { border: none; }
+.wl-out {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+.wl-out.won { background: var(--success-soft); color: var(--success); }
+.wl-out.lp { background: var(--warn-soft); color: var(--warn); }
+.wl-out.ll { background: var(--info-soft); color: var(--info); }
+.wl-out.lo { background: var(--danger-soft); color: var(--danger); }
+.rank-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+}
+.rank-cell .rank-num {
+  background: var(--canvas);
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+.rank-cell.rank-1 .rank-num { background: var(--success-soft); color: var(--success); }
+.heat-grid {
+  display: grid;
+  grid-template-columns: 200px repeat(3, 1fr);
+  gap: 4px;
+  font-size: 12px;
+}
+.heat-h {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--ink-faint);
+  font-weight: 700;
+  text-align: center;
+  padding: 8px 0;
+}
+.heat-name {
+  padding: 9px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.heat-cell {
+  text-align: center;
+  padding: 9px 0;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.heat-9, .heat-10 { background: #10B981; color: white; }
+.heat-7, .heat-8 { background: #6EE7B7; color: #064E3B; }
+.heat-5, .heat-6 { background: #FEF3C7; color: #92400E; }
+.heat-3, .heat-4 { background: #FCA5A5; color: #7F1D1D; }
+.heat-1, .heat-2 { background: #DC2626; color: white; }
+.r-drop {
+  display: inline-block;
+  font-size: 9px;
+  background: var(--danger-soft);
+  color: var(--danger);
+  padding: 1px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-weight: 700;
+  margin-left: 6px;
+}
+.tac-card {
+  background: var(--canvas);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  border-left: 3px solid;
+}
+.tac-card.surplus { border-color: var(--info); background: linear-gradient(to right, var(--info-soft), var(--canvas)); }
+.tac-card.idle { border-color: var(--warn); background: linear-gradient(to right, var(--warn-soft), var(--canvas)); }
+.tac-card.watch { border-color: var(--danger); background: linear-gradient(to right, var(--danger-soft), var(--canvas)); }
+.tac-h {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.tac-title { font-weight: 700; font-size: 13px; }
+.tac-meta { font-size: 11px; color: var(--ink-muted); line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<div id="rail-host" data-side="supplier-dave" data-active="dashboard"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>Sales Dashboard</h1>
+        <div class="subtitle">BruMate Wholesale, Pro tier. Win/loss feed, RFM heatmap, and your tactical surface.</div>
+      </div>
+    </div>
+    <div class="page-actions">
+      <span class="pill pill-success">Pro tier · $499/mo</span>
+      <button class="btn btn-secondary btn-sm" data-toast-only="Export queued, you'll receive an email">Export report</button>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="stat-label">Requests, last 30 days</div>
+      <div class="stat-value">47</div>
+      <div class="stat-trend up">▲ 12 vs prior month</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Response rate</div>
+      <div class="stat-value">94%</div>
+      <div class="stat-sub">Industry median 67%</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Win rate</div>
+      <div class="stat-value">38%</div>
+      <div class="stat-trend up">▲ 6pp vs prior month</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Avg rank when not winning</div>
+      <div class="stat-value">2.1</div>
+      <div class="stat-sub">Out of 4.2 avg bidders</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:20px">
+    <div class="card">
+      <div class="card-h">
+        <h3>Win / Loss feed</h3>
+        <div class="row-tight">
+          <button class="btn btn-secondary btn-sm">All</button>
+          <button class="btn btn-ghost btn-sm">Won</button>
+          <button class="btn btn-ghost btn-sm">Lost on price</button>
+          <button class="btn btn-ghost btn-sm">Lost on lead time</button>
+        </div>
+      </div>
+
+      <div class="wl-row" style="background:var(--success-soft);border-radius:8px;cursor:pointer" onclick="window.location.href='05-win-loss-detail.html'">
+        <div>
+          <b>OEM 20oz Tumbler</b>
+          <div class="faint" style="font-size:11px">2,500 pcs · 5 colour mix · Laser etch</div>
+        </div>
+        <div>
+          <b>Brightline Promo</b>
+          <div class="faint" style="font-size:11px">Distributor #234 · R9 F9 M8</div>
+        </div>
+        <div><span class="wl-out won">Won</span></div>
+        <div class="rank-cell rank-1"><span class="rank-num">1 of 4</span></div>
+        <div class="mono bold">$13,700</div>
+        <div><span style="color:var(--gold);font-weight:600;font-size:12px">View detail ›</span></div>
+      </div>
+
+      <div class="wl-row" style="cursor:pointer" onclick="window.location.href='05-win-loss-detail.html'">
+        <div>
+          <b>22oz Sport Bottle</b>
+          <div class="faint" style="font-size:11px">1,800 pcs · Sublimation, 1 colour</div>
+        </div>
+        <div>
+          <b>Distributor #112</b>
+          <div class="faint" style="font-size:11px">R7 F6 M5</div>
+        </div>
+        <div><span class="wl-out lp">Lost on price</span></div>
+        <div class="rank-cell"><span class="rank-num">3 of 5</span></div>
+        <div class="mono">$8,940</div>
+        <div><span class="muted" style="font-size:12px">Drill ›</span></div>
+      </div>
+
+      <div class="wl-row" style="cursor:pointer" onclick="window.location.href='05-win-loss-detail.html'">
+        <div>
+          <b>OEM 20oz Tumbler</b>
+          <div class="faint" style="font-size:11px">800 pcs · 1 colour · Sublimation</div>
+        </div>
+        <div>
+          <b>Halo Branded Solutions</b>
+          <div class="faint" style="font-size:11px">First-time bidder</div>
+        </div>
+        <div><span class="wl-out lp">Lost on price</span></div>
+        <div class="rank-cell"><span class="rank-num">2 of 6</span></div>
+        <div class="mono">$5,160</div>
+        <div><span class="muted" style="font-size:12px">Drill ›</span></div>
+      </div>
+
+      <div class="wl-row" style="cursor:pointer" onclick="window.location.href='05-win-loss-detail.html'">
+        <div>
+          <b>16oz Travel Mug</b>
+          <div class="faint" style="font-size:11px">3,600 pcs · Mixed colour · Laser</div>
+        </div>
+        <div>
+          <b>Fully Promoted</b>
+          <div class="faint" style="font-size:11px">R8 F7 M9</div>
+        </div>
+        <div><span class="wl-out ll">Lost on lead time</span></div>
+        <div class="rank-cell"><span class="rank-num">2 of 4</span></div>
+        <div class="mono">$22,140</div>
+        <div><span class="muted" style="font-size:12px">Drill ›</span></div>
+      </div>
+
+      <div class="wl-row" style="background:var(--success-soft);border-radius:8px;cursor:pointer">
+        <div>
+          <b>OEM 20oz Tumbler</b>
+          <div class="faint" style="font-size:11px">5,000 pcs · 3 colour · Laser</div>
+        </div>
+        <div>
+          <b>Geiger</b>
+          <div class="faint" style="font-size:11px">R5 F4 M9 <span class="r-drop">R drop</span></div>
+        </div>
+        <div><span class="wl-out won">Won</span></div>
+        <div class="rank-cell rank-1"><span class="rank-num">1 of 3</span></div>
+        <div class="mono bold">$27,400</div>
+        <div><span style="color:var(--gold);font-weight:600;font-size:12px">View detail ›</span></div>
+      </div>
+
+      <div class="wl-row" style="cursor:pointer">
+        <div>
+          <b>22oz Sport Bottle</b>
+          <div class="faint" style="font-size:11px">1,200 pcs · 2 colour pad print</div>
+        </div>
+        <div>
+          <b>Distributor #189</b>
+          <div class="faint" style="font-size:11px">R6 F5 M4</div>
+        </div>
+        <div><span class="wl-out lo">Order placed elsewhere</span></div>
+        <div class="rank-cell"><span class="rank-num">2 of 4</span></div>
+        <div class="mono">$6,840</div>
+        <div><span class="muted" style="font-size:12px">Drill ›</span></div>
+      </div>
+
+      <div style="margin-top:12px;padding:12px;background:var(--gold-soft);border-radius:8px;font-size:12px;color:var(--ink-muted);line-height:1.5">
+        <b style="color:var(--gold)">Pattern.</b> 4 of your last 8 losses were on price by under 5%. The Loyalty Tax suggests you have headroom on R9 distributors, you may be underbidding them.
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-h">
+          <h3>Tactical surface</h3>
+          <span class="faint" style="font-size:11px;font-family:'JetBrains Mono',monospace">3 alerts</span>
+        </div>
+        <p class="muted" style="font-size:12px;margin-bottom:14px">Surplus, idle capacity, and at-risk accounts surfaced automatically.</p>
+
+        <div class="tac-card surplus" style="cursor:pointer" onclick="window.location.href='07-tactical.html'">
+          <div class="tac-h">
+            <div class="tac-title">⚠ Matte Black surplus, 4,200 pcs</div>
+            <span class="pill pill-info">Surplus</span>
+          </div>
+          <div class="tac-meta">Aged 67 days, holding cost $0.04/pc/month. Suggested clearance price $4.62, applied automatically to incoming briefs.</div>
+        </div>
+
+        <div class="tac-card idle" style="cursor:pointer" onclick="window.location.href='07-tactical.html'">
+          <div class="tac-h">
+            <div class="tac-title">⚡ Laser bay 3 idle, week of 1 Dec</div>
+            <span class="pill pill-warn">Idle capacity</span>
+          </div>
+          <div class="tac-meta">38% utilisation forecast. Consider rush-discount flag for time-sensitive bids.</div>
+        </div>
+
+        <div class="tac-card watch" style="cursor:pointer" onclick="window.location.href='12-rfm-trend.html'">
+          <div class="tac-h">
+            <div class="tac-title">📉 Distributor #432, R dropped from 8 to 4</div>
+            <span class="pill pill-danger">Watch</span>
+          </div>
+          <div class="tac-meta">Last order 89 days ago vs 12-month average of 28 days. $34k annual spend at risk.</div>
+        </div>
+
+        <button class="btn btn-secondary btn-block btn-sm" style="margin-top:10px" onclick="window.location.href='07-tactical.html'">View all tactical alerts →</button>
+      </div>
+
+      <div class="card">
+        <div class="card-h">
+          <h3>RFM heatmap, top 10 accounts</h3>
+          <button class="btn btn-ghost btn-sm" onclick="window.location.href='06-rfm-heatmap.html'">Full view ›</button>
+        </div>
+
+        <div class="heat-grid">
+          <div class="heat-h">Distributor</div>
+          <div class="heat-h">R</div>
+          <div class="heat-h">F</div>
+          <div class="heat-h">M</div>
+
+          <div class="heat-name"><span>Brightline Promo</span></div>
+          <div class="heat-cell heat-9">9</div>
+          <div class="heat-cell heat-9">9</div>
+          <div class="heat-cell heat-8">8</div>
+
+          <div class="heat-name"><span>Halo Branded</span></div>
+          <div class="heat-cell heat-8">8</div>
+          <div class="heat-cell heat-7">7</div>
+          <div class="heat-cell heat-9">9</div>
+
+          <div class="heat-name"><span>Geiger <span class="r-drop">R drop</span></span></div>
+          <div class="heat-cell heat-5">5</div>
+          <div class="heat-cell heat-4">4</div>
+          <div class="heat-cell heat-9">9</div>
+
+          <div class="heat-name"><span>Fully Promoted</span></div>
+          <div class="heat-cell heat-8">8</div>
+          <div class="heat-cell heat-7">7</div>
+          <div class="heat-cell heat-9">9</div>
+
+          <div class="heat-name"><span>Distributor #189</span></div>
+          <div class="heat-cell heat-6">6</div>
+          <div class="heat-cell heat-5">5</div>
+          <div class="heat-cell heat-4">4</div>
+
+          <div class="heat-name"><span>Distributor #432 <span class="r-drop">R drop</span></span></div>
+          <div class="heat-cell heat-4">4</div>
+          <div class="heat-cell heat-7">7</div>
+          <div class="heat-cell heat-8">8</div>
+
+          <div class="heat-name"><span>Promote Inc</span></div>
+          <div class="heat-cell heat-7">7</div>
+          <div class="heat-cell heat-6">6</div>
+          <div class="heat-cell heat-5">5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('supplier', {
+    sellerHref: '../seller/08-dashboard-replies-in.html',
+    supplierHref: '04-supplier-dashboard.html'
+  });
+</script>
+</body>
+</html>

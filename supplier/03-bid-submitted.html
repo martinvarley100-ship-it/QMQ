@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bid submitted, QR-2026-00482</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+</head>
+<body>
+
+<div id="rail-host" data-side="supplier-erica" data-active="inbox"></div>
+
+<main class="main">
+  <div style="max-width:680px;margin:60px auto 0">
+    <div class="card" style="text-align:center;padding:48px 40px">
+      <div style="width:80px;height:80px;background:var(--success-soft);border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;color:var(--success)">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h1 style="font-size:32px;font-weight:700;letter-spacing:-0.5px;margin-bottom:8px">Bid submitted</h1>
+      <p class="muted" style="font-size:15px;margin-bottom:28px">Brightline Promo has been notified. Martin will see your quote in his comparison dashboard alongside the other supplier responses. You will be alerted when he converts to PO or chooses another supplier.</p>
+
+      <div style="background:var(--canvas);border-radius:12px;padding:18px 22px;margin-bottom:24px;text-align:left">
+        <div class="row" style="justify-content:space-between">
+          <div>
+            <div class="faint" style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600">Reference</div>
+            <div class="bold mono" style="font-size:15px;margin-top:2px">QR-2026-00482</div>
+          </div>
+          <div>
+            <div class="faint" style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600">Your bid</div>
+            <div class="bold mono" style="font-size:15px;margin-top:2px;color:var(--gold)">$13,700</div>
+          </div>
+          <div>
+            <div class="faint" style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600">Submitted</div>
+            <div class="bold" style="font-size:15px;margin-top:2px">10:38 AM ET</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:left;background:var(--gold-soft);border-radius:10px;padding:16px;margin-bottom:24px">
+        <div class="bold" style="color:var(--gold);font-size:13px;margin-bottom:8px">After the decision</div>
+        <p style="font-size:12px;color:var(--ink-muted);line-height:1.6">
+          If Martin chooses you, the order arrives in your dashboard as a PO and your CRM is updated automatically (HubSpot integration active). If he chooses someone else, you will see your anonymised rank and a category outcome (price, lead time, or service) in the Win / Loss feed, with no competitor names exposed.
+        </p>
+      </div>
+
+      <div class="row" style="justify-content:center">
+        <button class="btn btn-secondary" data-next="01-inbox.html">Back to inbox</button>
+        <button class="btn btn-primary" data-next="04-supplier-dashboard.html">Go to dashboard →</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('supplier', {
+    sellerHref: '../seller/06-quote-sent.html',
+    supplierHref: '03-bid-submitted.html'
+  });
+</script>
+</body>
+</html>

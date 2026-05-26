@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convert to PO, QR-2026-00482</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+</head>
+<body>
+
+<div id="rail-host" data-side="seller" data-active="qmq"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>Convert quote to PO</h1>
+        <div class="subtitle">Confirm the order details. AimIQ will issue PO BMW-PO-2841 to BruMate and notify Erica.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:20px">
+    <div class="card">
+      <div class="card-h"><h3>Order details</h3></div>
+
+      <div class="grid-2" style="margin-bottom:20px">
+        <div><span class="faint" style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600">PO Number</span><div class="bold mono" style="font-size:15px">BMW-PO-2841</div></div>
+        <div><span class="faint" style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600">PO Date</span><div class="bold">25 May 2026</div></div>
+        <div><span class="faint" style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600">Supplier</span><div class="bold">BruMate Wholesale</div></div>
+        <div><span class="faint" style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600">Quote Ref</span><div class="bold mono">BMW-Q-2026-2841</div></div>
+        <div><span class="faint" style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600">In hands</span><div class="bold">14 December 2026</div></div>
+        <div><span class="faint" style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600">Ship to</span><div class="bold">Miami FL 33126</div></div>
+      </div>
+
+      <div style="padding-top:16px;border-top:1px solid var(--border-soft)">
+        <div class="bold" style="font-size:13px;margin-bottom:12px">Line items</div>
+        <table class="table">
+          <tbody>
+            <tr><td><b>OEM 20oz Tumbler</b> <span class="faint" style="font-size:11px">SKU BMW-T20-PC</span></td><td class="right mono">2,500 × $5.18</td><td class="right mono bold">$12,950.00</td></tr>
+            <tr><td>Laser etch setup</td><td class="right mono">1 × $40</td><td class="right mono">$40.00</td></tr>
+            <tr><td>Mixed colour upcharge</td><td class="right mono">2,500 × $0.08</td><td class="right mono">$200.00</td></tr>
+            <tr><td>Estimated freight</td><td class="right mono">Tampa → Miami</td><td class="right mono">$410.00</td></tr>
+            <tr style="background:var(--gold-soft)"><td><b>Total landed cost</b></td><td></td><td class="right mono bold" style="font-size:18px;color:var(--gold)">$13,700.00</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top:18px;padding:14px;background:var(--canvas);border-radius:10px">
+        <label class="row" style="align-items:flex-start;cursor:pointer">
+          <input type="checkbox" checked style="margin-top:3px;width:16px;height:16px;accent-color:var(--gold)">
+          <div style="margin-left:10px;font-size:13px">
+            <div class="bold">Activate Double Rewards on this order</div>
+            <div class="faint" style="font-size:11px">Erica's quote includes this offer flag. 2x AIM points credited on confirmation.</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card">
+        <div class="card-section-h">
+          <div class="icon-sq"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+          <h4>What happens next</h4>
+        </div>
+        <ol style="font-size:13px;color:var(--ink-muted);line-height:1.7;padding-left:18px">
+          <li>PO BMW-PO-2841 is issued and sent to Erica at BruMate</li>
+          <li>BruMate confirms receipt within 24 hours</li>
+          <li>Production starts on approved artwork</li>
+          <li>Ship from Tampa on or before 10 Dec</li>
+          <li>You receive the PDF quote and PO copy by email</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <div class="card-section-h">
+          <div class="icon-sq" style="background:var(--success-soft);color:var(--success)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <h4>Estimated rewards</h4>
+        </div>
+        <div style="font-size:22px;font-weight:700;color:var(--gold)">2,580 AIM points</div>
+        <div class="faint" style="font-size:12px;margin-top:2px">Base 1,290 + Double Rewards 1,290</div>
+        <div class="faint" style="font-size:11px;margin-top:8px">Worth approximately $86 toward your next AIM redemption.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:var(--paper);border-radius:var(--radius-lg);box-shadow:var(--shadow-card)">
+    <button class="btn btn-secondary" onclick="window.location.href='08-dashboard-replies-in.html'">← Back to comparison</button>
+    <div class="row-tight" style="align-items:center">
+      <button class="btn btn-ghost" data-toast-only="Order saved for later">Save for later</button>
+      <button class="btn btn-primary btn-lg" data-next="11-pdf-quote.html" data-toast="PO BMW-PO-2841 issued to BruMate">Confirm and issue PO →</button>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('seller', {
+    sellerHref: '10-convert-to-po.html',
+    supplierHref: '../supplier/03-bid-submitted.html'
+  });
+</script>
+</body>
+</html>

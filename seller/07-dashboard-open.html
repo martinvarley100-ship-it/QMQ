@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR-2026-00482, awaiting replies</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+</head>
+<body>
+
+<div id="rail-host" data-side="seller" data-active="qmq"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>QR-2026-00482</h1>
+        <div class="subtitle">OEM 20oz Tumbler · 2,500 pcs · In hands 14 Dec 2026 · Sent 18 minutes ago.</div>
+      </div>
+    </div>
+    <div class="page-actions">
+      <span class="pill pill-warn">2 of 3 replies in</span>
+      <button class="btn btn-ghost btn-sm" data-toast-only="Cancellation sent to suppliers">Cancel request</button>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="stat-label">Best TCO so far</div>
+      <div class="stat-value">$13,700</div>
+      <div class="stat-sub">BruMate Wholesale, $5.18/pc</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">System estimate</div>
+      <div class="stat-value">$15,540</div>
+      <div class="stat-sub">$5.85/pc midpoint, E&amp;OE</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Time elapsed</div>
+      <div class="stat-value">18m</div>
+      <div class="stat-sub">SLA 1 working hour</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Replies in</div>
+      <div class="stat-value">2 / 3</div>
+      <div class="stat-sub">Waiting on Garyline</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-h"><h3>Replies coming in</h3><span class="faint" style="font-size:11px;font-family:'JetBrains Mono',monospace">Live, refreshes every 30s</span></div>
+
+    <div class="col">
+
+      <div style="padding:16px 18px;background:var(--success-soft);border-radius:12px;border:1px solid rgba(16,185,129,0.2)">
+        <div class="between">
+          <div>
+            <div class="bold" style="font-size:15px">BruMate Wholesale <span class="tier tier-platinum">Platinum</span></div>
+            <div class="faint" style="font-size:12px;margin-top:2px">Erica Hahn · Replied 4 minutes ago</div>
+          </div>
+          <div style="text-align:right">
+            <div class="bold mono" style="font-size:20px">$13,700</div>
+            <div class="faint" style="font-size:11px">TCO · $5.18/pc</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:16px 18px;background:var(--success-soft);border-radius:12px;border:1px solid rgba(16,185,129,0.2)">
+        <div class="between">
+          <div>
+            <div class="bold" style="font-size:15px">HPG Brands <span class="tier tier-brand">Brand Partner</span></div>
+            <div class="faint" style="font-size:12px;margin-top:2px">Marcus Tate · Replied 11 minutes ago</div>
+          </div>
+          <div style="text-align:right">
+            <div class="bold mono" style="font-size:20px">$15,705</div>
+            <div class="faint" style="font-size:11px">TCO · $5.95/pc</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:16px 18px;background:var(--canvas);border-radius:12px;border:1px dashed var(--border)">
+        <div class="between">
+          <div>
+            <div class="bold" style="font-size:15px">Garyline Drinkware <span class="tier tier-gold">Gold</span></div>
+            <div class="faint" style="font-size:12px;margin-top:2px">Jen Walker · Awaiting reply, expected within 42 minutes</div>
+          </div>
+          <div>
+            <div style="display:flex;gap:6px;align-items:center;color:var(--warn);font-weight:600;font-size:13px">
+              <span style="width:8px;height:8px;border-radius:50%;background:var(--warn);animation:pulse 1.5s infinite"></span>
+              In progress
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;padding:14px 16px;background:var(--gold-soft);border-radius:10px;font-size:13px;color:var(--ink-muted);line-height:1.6">
+      <b style="color:var(--gold)">Waiting on the full picture.</b> You'll be alerted on WhatsApp the moment Jen at Garyline replies. The comparison view becomes much more useful with all responses in.
+    </div>
+  </div>
+
+  <div style="margin-top:24px;display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:var(--paper);border-radius:var(--radius-lg);box-shadow:var(--shadow-card)">
+    <button class="btn btn-secondary" onclick="window.location.href='01-qmq-dashboard.html'">← Back to dashboard</button>
+    <button class="btn btn-primary" data-next="08-dashboard-replies-in.html">Fast forward to all replies in →</button>
+  </div>
+</main>
+
+<style>
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+</style>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('seller', {
+    sellerHref: '07-dashboard-open.html',
+    supplierHref: '../supplier/02-bid-response-erica.html'
+  });
+</script>
+</body>
+</html>

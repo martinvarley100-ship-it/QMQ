@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Step 2, the brief, QMQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shell.css">
+</head>
+<body>
+
+<div id="rail-host" data-side="seller" data-active="qmq"></div>
+
+<main class="main">
+  <div class="page-head">
+    <div class="page-title">
+      <div class="accent-bar"></div>
+      <div>
+        <h1>New quote request</h1>
+        <div class="subtitle">Step 2 of 4, brief the suppliers. Be specific about quantity, decoration, and in-hands date.</div>
+      </div>
+    </div>
+    <div class="page-actions">
+      <button class="btn btn-ghost" data-toast-only="Draft saved">Save draft</button>
+    </div>
+  </div>
+
+  <div class="stepper">
+    <div class="step done"><div class="step-num">✓</div>Product</div>
+    <div class="step-arrow">›</div>
+    <div class="step active"><div class="step-num">2</div>Brief</div>
+    <div class="step-arrow">›</div>
+    <div class="step"><div class="step-num">3</div>Suppliers</div>
+    <div class="step-arrow">›</div>
+    <div class="step"><div class="step-num">4</div>Review &amp; send</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px">
+    <div class="card">
+      <div style="background:var(--canvas);padding:14px 16px;border-radius:8px;margin-bottom:24px;display:flex;align-items:center;gap:12px">
+        <div style="width:48px;height:48px;background:var(--paper);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px">🥤</div>
+        <div style="flex:1">
+          <div class="bold" style="font-size:14px">OEM 20oz Insulated Tumbler</div>
+          <div class="faint" style="font-size:12px">Catalogue ID 209441 · Drinkware · Powder coat, push-fit lid</div>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="window.location.href='02-step1-product.html'">Change product</button>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <label class="field-label">Quantity</label>
+          <input class="input" value="2,500">
+          <div class="field-hint">Total pieces across all colours.</div>
+        </div>
+        <div>
+          <label class="field-label">In hands date</label>
+          <input class="input" type="text" value="14 December 2026">
+          <div class="field-hint">Final delivery date to your end client.</div>
+        </div>
+      </div>
+
+      <div class="spacer-lg"></div>
+
+      <div>
+        <label class="field-label">Colour breakdown</label>
+        <div class="col">
+          <div class="row-tight" style="align-items:center"><input class="input" value="Matte Black" style="flex:1"><input class="input" value="800" style="width:100px">pcs</div>
+          <div class="row-tight" style="align-items:center"><input class="input" value="Navy" style="flex:1"><input class="input" value="700" style="width:100px">pcs</div>
+          <div class="row-tight" style="align-items:center"><input class="input" value="Crimson" style="flex:1"><input class="input" value="500" style="width:100px">pcs</div>
+          <div class="row-tight" style="align-items:center"><input class="input" value="Ivory" style="flex:1"><input class="input" value="300" style="width:100px">pcs</div>
+          <div class="row-tight" style="align-items:center"><input class="input" value="Forest" style="flex:1"><input class="input" value="200" style="width:100px">pcs</div>
+        </div>
+        <button class="btn btn-ghost btn-sm" style="margin-top:10px">+ Add colour</button>
+      </div>
+
+      <div class="spacer-lg"></div>
+
+      <div class="grid-2">
+        <div>
+          <label class="field-label">Decoration method</label>
+          <select class="select">
+            <option>Laser etch</option>
+            <option>Screen print</option>
+            <option>Pad print</option>
+            <option>Sublimation</option>
+            <option>Engrave</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label">Number of locations</label>
+          <select class="select">
+            <option>1 location</option>
+            <option>2 locations</option>
+            <option>3 locations</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="spacer-md"></div>
+
+      <div class="grid-2">
+        <div>
+          <label class="field-label">Position</label>
+          <input class="input" value="Front, centred">
+        </div>
+        <div>
+          <label class="field-label">Imprint size</label>
+          <input class="input" value="2.5 inches wide">
+        </div>
+      </div>
+
+      <div class="spacer-lg"></div>
+
+      <label class="field-label">Notes for suppliers (optional)</label>
+      <textarea class="textarea" placeholder="Anything else suppliers should know…">End client is a corporate gifting buyer, this is their Q4 employee appreciation order. Quality matters more than absolute lowest price. Mixed colour run is intentional.</textarea>
+
+      <div class="spacer-lg"></div>
+
+      <label class="field-label">Attachments</label>
+      <div class="upload-zone">
+        <div class="upload-icon">↑</div>
+        <div class="upload-text">2 files attached</div>
+        <div class="upload-hint">logo.eps (134 KB) · brief.pdf (2.1 MB)</div>
+      </div>
+    </div>
+
+    <div class="card" style="align-self:flex-start;position:sticky;top:24px">
+      <div class="card-section-h">
+        <div class="icon-sq"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h4>Brief summary</h4>
+      </div>
+      <div style="font-size:13px;line-height:1.7">
+        <div class="between"><span class="faint">Product</span><span class="bold">20oz Tumbler</span></div>
+        <div class="between"><span class="faint">Quantity</span><span class="bold">2,500 pcs</span></div>
+        <div class="between"><span class="faint">Colours</span><span class="bold">5</span></div>
+        <div class="between"><span class="faint">Decoration</span><span class="bold">Laser etch</span></div>
+        <div class="between"><span class="faint">In hands</span><span class="bold">14 Dec 2026</span></div>
+        <div class="between"><span class="faint">Files</span><span class="bold">2 attached</span></div>
+      </div>
+
+      <div style="margin-top:18px;padding:12px;background:var(--gold-soft);border-radius:8px;font-size:12px;color:var(--ink-muted);line-height:1.5">
+        <b style="color:var(--gold)">SLA.</b> Suppliers have 1 working hour to respond once you send. AimIQ chases at 1 hour, marks as timed out at 4 hours.
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:var(--paper);border-radius:var(--radius-lg);box-shadow:var(--shadow-card)">
+    <button class="btn btn-secondary" onclick="window.location.href='02-step1-product.html'">← Back to product</button>
+    <button class="btn btn-primary" data-next="04-step3-suppliers.html">Continue to suppliers →</button>
+  </div>
+</main>
+
+<script src="../assets/shell.js"></script>
+<script>
+  renderDemoToggle('seller', {
+    sellerHref: '03-step2-brief.html',
+    supplierHref: '../supplier/01-inbox.html'
+  });
+</script>
+</body>
+</html>
