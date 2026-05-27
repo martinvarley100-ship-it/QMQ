@@ -1,5 +1,5 @@
 /* =================================================================
-   AimIQ Quote Me Quick demo, shared shell JS
+   AimIQ Instant Verified Quote demo, shared shell JS
    Renders the left rail and provides demo utilities.
    ================================================================= */
 
@@ -39,7 +39,7 @@ const SELLER_NAV = [
   { label: "Lookup Inventory", icon: "clipboard", href: "#" },
   { label: "Find a Logo", icon: "image", href: "#" },
   { label: "Product Mock Up", icon: "palette", href: "#" },
-  { label: "Quote Me Quick", icon: "qmq", href: "../seller/01-qmq-dashboard.html", id: "qmq", isNew: true },
+  { label: "Instant Verified Quote", icon: "qmq", href: "../seller/01-qmq-dashboard.html", id: "qmq", isNew: true },
   { label: "VIP Suppliers", icon: "diamond", href: "#" },
   { label: "Content Creator", icon: "zap", href: "#" },
   { label: "Promote", icon: "sparkles", href: "#" },
