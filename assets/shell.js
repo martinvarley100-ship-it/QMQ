@@ -52,6 +52,8 @@ const SUPPLIER_NAV = [
   { section: "" },
   { label: "Dashboard", icon: "chart", href: "../supplier/04-supplier-dashboard.html", id: "dashboard" },
   { label: "Pending Quotes", icon: "inbox", href: "../supplier/01-inbox.html", id: "inbox" },
+  { section: "APEX" },
+  { label: "Market Pulse", icon: "pulse", href: "../apex/01-apex-dashboard.html", id: "apex", apex: true },
   { section: "INTELLIGENCE" },
   { label: "Win / Loss Feed", icon: "trending", href: "../supplier/05-win-loss-detail.html", id: "winloss" },
   { label: "RFM Heatmap", icon: "grid", href: "../supplier/06-rfm-heatmap.html", id: "rfm" },
@@ -81,7 +83,8 @@ const ICONS = {
   target: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
   model: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>',
   users: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
-  plug: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>'
+  plug: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>',
+  pulse: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>'
 };
 
 function renderRail(side, activeId) {
@@ -104,11 +107,14 @@ function renderRail(side, activeId) {
 
   const items = nav.map(item => {
     if (item.section !== undefined) {
-      return item.section ? `<div class="rail-section-label">${item.section}</div>` : '<div style="height:4px"></div>';
+      if (!item.section) return '<div style="height:4px"></div>';
+      const goldSection = item.section === "APEX";
+      return `<div class="rail-section-label" style="${goldSection ? 'color:var(--gold);' : ''}">${item.section}${goldSection ? ' <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-left:4px;vertical-align:middle;animation:pulse 1.6s ease-in-out infinite"></span>' : ''}</div>`;
     }
     const active = (activeId && item.id === activeId) ? "active" : "";
+    const apexStyle = item.apex ? 'style="border:1px solid rgba(245,176,39,0.35);background:rgba(245,176,39,0.06)"' : '';
     const icon = ICONS[item.icon] || ICONS.search;
-    return `<a class="rail-item ${active}" href="${fixHref(item.href)}"><span class="rail-icon">${icon}</span>${item.label}</a>`;
+    return `<a class="rail-item ${active}" ${apexStyle} href="${fixHref(item.href)}"><span class="rail-icon"${item.apex ? ' style="color:var(--gold)"' : ''}>${icon}</span>${item.label}</a>`;
   }).join("");
 
   return `

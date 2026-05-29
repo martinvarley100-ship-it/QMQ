@@ -818,3 +818,392 @@ a { color: inherit; text-decoration: none; }
   border-top: 1px solid var(--border-soft);
   display: flex; gap: 10px; justify-content: flex-end;
 }
+
+/* =================================================================
+   APEX, the demand-based pricing engine
+   Editorial trading floor aesthetic, denser numbers, live signals
+   ================================================================= */
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Live indicator dot */
+.live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse 1.6s ease-in-out infinite;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.live-dot.green { background: var(--success); }
+.live-dot.red { background: var(--danger); }
+
+/* The ticker bar */
+.apex-ticker {
+  background: var(--rail);
+  color: var(--paper);
+  padding: 10px 0;
+  margin: -32px -40px 24px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(245,176,39,0.2);
+}
+.apex-ticker::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 60px;
+  background: linear-gradient(to right, var(--rail), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+.apex-ticker::after {
+  content: "";
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 60px;
+  background: linear-gradient(to left, var(--rail), transparent);
+  z-index: 2;
+  pointer-events: none;
+}
+.apex-ticker-label {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  background: var(--rail);
+  padding-right: 12px;
+}
+.apex-ticker-track {
+  display: flex;
+  gap: 32px;
+  white-space: nowrap;
+  animation: ticker-scroll 90s linear infinite;
+  padding-left: 140px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}
+.apex-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.apex-ticker-item .sup {
+  color: var(--paper);
+  font-weight: 600;
+}
+.apex-ticker-item .delta-up { color: var(--success); font-weight: 700; }
+.apex-ticker-item .delta-down { color: #FCA5A5; font-weight: 700; }
+.apex-ticker-item .delta-flat { color: var(--rail-muted); }
+.apex-ticker-item .time { color: var(--rail-muted); font-size: 10px; }
+.apex-ticker-item .sku { color: var(--rail-muted); }
+
+/* Category outlook card */
+.cat-card {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+.cat-card-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+.cat-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+.cat-card-sub {
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-top: 2px;
+}
+.cat-outlook {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+.cat-outlook.growing { background: var(--success-soft); color: var(--success); }
+.cat-outlook.stable { background: var(--gold-soft); color: var(--gold); }
+.cat-outlook.declining { background: var(--danger-soft); color: var(--danger); }
+.cat-outlook .arrow { font-size: 10px; }
+
+/* Big number with sparkline */
+.cat-number-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-soft);
+  margin-bottom: 14px;
+}
+.cat-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+.cat-number-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ink-faint);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.cat-number-delta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.cat-number-delta.up { color: var(--success); }
+.cat-number-delta.down { color: var(--danger); }
+
+/* Sparkline svg styling */
+.spark {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Top movers list inside category card */
+.movers-list { margin-top: 6px; }
+.mover-row {
+  display: grid;
+  grid-template-columns: 1fr 60px 50px;
+  gap: 10px;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+.mover-row:last-child { border: none; }
+.mover-name {
+  font-weight: 500;
+  color: var(--ink);
+}
+.mover-name .mover-sup {
+  font-size: 10px;
+  color: var(--ink-faint);
+  display: block;
+  margin-top: 1px;
+}
+.mover-delta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+}
+.mover-delta.up { color: var(--success); }
+.mover-delta.down { color: var(--danger); }
+
+/* Action card */
+.action-card {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-card);
+  border-left: 4px solid var(--gold);
+  margin-bottom: 12px;
+  position: relative;
+}
+.action-card.urgent { border-left-color: var(--danger); }
+.action-card.info { border-left-color: var(--info); }
+.action-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.action-tag {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+.action-tag.urgent { background: var(--danger-soft); color: var(--danger); }
+.action-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+.action-reasoning {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+.action-numbers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 12px;
+  background: var(--canvas);
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+.action-stat-l {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ink-faint);
+  font-weight: 700;
+}
+.action-stat-v {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.action-stat-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+.action-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Position summary panel */
+.pos-summary {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-card);
+}
+.pos-summary-h {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pos-bar-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 60px;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 12px;
+}
+.pos-bar-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-weight: 700;
+  color: var(--ink-faint);
+}
+.pos-bar-track {
+  height: 8px;
+  background: var(--canvas);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+.pos-bar-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 4px;
+}
+.pos-bar-fill.low { background: var(--success); }
+.pos-bar-fill.typ { background: var(--gold); }
+.pos-bar-fill.high { background: var(--warn); }
+.pos-bar-marker {
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: 14px;
+  background: var(--ink);
+}
+.pos-bar-marker::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 8px;
+  height: 8px;
+  background: var(--ink);
+  border-radius: 50%;
+}
+.pos-bar-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  text-align: right;
+  font-size: 13px;
+}
+
+/* Apex tier badge */
+.apex-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(135deg, var(--gold), #D4870C);
+  color: var(--paper);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Mini header with live indicator */
+.apex-section-h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+}
+.apex-section-h h3 {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  display: flex;
+  align-items: center;
+}
+.apex-section-h .meta {
+  font-size: 10px;
+  color: var(--ink-faint);
+  font-family: 'JetBrains Mono', monospace;
+}
+
